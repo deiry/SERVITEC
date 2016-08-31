@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngMaterial'])
+angular.module('starter.controllers', ['ngMaterial','ngMessages','material.svgAssetsCache'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 

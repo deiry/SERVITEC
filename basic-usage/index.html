@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Basic Usage</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    
+    
+    <link rel='stylesheet prefetch' href='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.css'>
+<link rel='stylesheet prefetch' href='https://material.angularjs.org/1.1.0/docs.css'>
+
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <div ng-controller="AppCtrl" ng-cloak="" class="fabToolbardemoBasicUsage" ng-app="MyApp">
+  <md-content class="md-padding">
+    <p>
+      You can use the fabToolbar with a trigger and regular toolbar.
+    </p>
+
+    <p>
+      You may use the <code>md-open</code> attribute to programmatically control whether or not the
+      control is open, and you may set the direction that the toolbar appears using the
+      <code>md-direction</code> attribute. This component currently supports the <code>left</code>
+      and <code>right</code> options.
+    </p>
+  </md-content>
+
+  <md-fab-toolbar md-open="demo.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-svg-src="img/icons/menu.svg"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="comment" class="md-icon-button">
+          <md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>
+        </md-button>
+        <md-button aria-label="label" class="md-icon-button">
+          <md-icon md-svg-src="img/icons/ic_label_24px.svg"></md-icon>
+        </md-button>
+        <md-button aria-label="photo" class="md-icon-button">
+          <md-icon md-svg-src="img/icons/ic_photo_24px.svg"></md-icon>
+        </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
+
+  <md-content class="md-padding" layout="column">
+    <div layout="row" layout-align="space-around">
+      <div layout="column">
+        <b>Open/Closed</b>
+
+        <md-radio-group ng-model="demo.isOpen">
+          <md-radio-button ng-value="true">Open</md-radio-button>
+          <md-radio-button ng-value="false">Closed</md-radio-button>
+        </md-radio-group>
+      </div>
+
+      <div layout="column">
+        <b>Direction</b>
+
+        <md-radio-group ng-model="demo.selectedDirection">
+          <md-radio-button ng-value="'left'">Left</md-radio-button>
+          <md-radio-button ng-value="'right'">Right</md-radio-button>
+        </md-radio-group>
+      </div>
+    </div>
+  </md-content>
+</div>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+-->
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
+<script src='https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.js'></script>
+
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
