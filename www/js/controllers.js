@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -52,5 +52,16 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.controller('ImageCtrl', function($scope){
+        $scope.isOpen = false;
+        $scope.demo = {
+            isOpen: false,
+            count: 0,
+            selectedDirection: 'left'
+        };
+})
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
+
+
