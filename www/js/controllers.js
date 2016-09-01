@@ -52,7 +52,7 @@ angular.module('starter.controllers', ['ngMaterial','ngMessages','material.svgAs
   ];
 })
 
-.controller('ImageCtrl', function($scope){
+.controller('FABCtrl', function($scope){
         $scope.isOpen = false;
         $scope.demo = {
             isOpen: false,

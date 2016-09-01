@@ -1,7 +1,14 @@
 <ion-view view-title="Servitec">
   <ion-content>
-      <footer flex="none" style="background-color:orange;color:white;">
-          <div ng-controller="ImageCtrl" ng-cloak>
+      <div layout="column">
+          <main flex>
+              <div ui-view>
+                  <img ng-src="img/staticmap.png"/>
+              </div>
+          </main>
+         <div ng-controller="FABCtrl" layout="row"  layout-align="end" ng-cloak>
+      <footer flex="none"  style="bottom: 0px; position: absolute;" >
+
               <md-fab-toolbar md-open="demo.isOpen" count="demo.count"
                               md-direction="{{demo.selectedDirection}}">
                   <md-fab-trigger class="align-with-text">
@@ -12,7 +19,7 @@
                   <md-toolbar>
                       <md-fab-actions class="md-toolbar-tools">
                           <md-button aria-label="comment" class="md-icon-button">
-                              <md-icon md-svg-src="img/icons/ic_comment_24px.svg"></md-icon>
+                              <ng-md-icon icon="photo_camera" style="fill:white;"></ng-md-icon>
                           </md-button>
                           <md-button aria-label="label" class="md-icon-button">
                               <md-icon md-svg-src="img/icons/ic_label_24px.svg"></md-icon>
@@ -24,7 +31,9 @@
                   </md-toolbar>
               </md-fab-toolbar>
 
-          </div>
+
       </footer>
+      </div>
+      </div>
   </ion-content>
 </ion-view>
