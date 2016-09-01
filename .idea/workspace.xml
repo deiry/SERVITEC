@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d7cba0f-7d1b-4484-ab65-c9837c6d6737" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/menu.html" afterPath="$PROJECT_DIR$/www/templates/menu.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/playlists.html" afterPath="$PROJECT_DIR$/www/templates/playlists.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/style.css" afterPath="$PROJECT_DIR$/www/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="servitec.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,11 +82,13 @@
       <file leaf-file-name="playlists.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/templates/playlists.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61445785" vertical-offset="0" max-vertical-offset="765">
-              <caret line="21" column="81" selection-start-line="21" selection-start-column="81" selection-end-line="21" selection-end-column="81" />
+            <state vertical-scroll-proportion="0.7900172" vertical-offset="0" max-vertical-offset="765">
+              <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
               <folding>
                 <element signature="n#style#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#ng-md-icon#0;n#md-button#0;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ng-md-icon#0;n#md-button#1;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ng-md-icon#0;n#md-button#2;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -376,6 +372,8 @@
           <folding>
             <element signature="n#style#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ng-md-icon#0;n#md-button#0;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ng-md-icon#0;n#md-button#1;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ng-md-icon#0;n#md-button#2;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -427,6 +425,8 @@
           <folding>
             <element signature="n#style#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ng-md-icon#0;n#md-button#0;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ng-md-icon#0;n#md-button#1;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ng-md-icon#0;n#md-button#2;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -511,11 +511,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/templates/playlists.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61445785" vertical-offset="0" max-vertical-offset="765">
-          <caret line="21" column="81" selection-start-line="21" selection-start-column="81" selection-end-line="21" selection-end-column="81" />
+        <state vertical-scroll-proportion="0.7900172" vertical-offset="0" max-vertical-offset="765">
+          <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
           <folding>
             <element signature="n#style#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ng-md-icon#0;n#md-button#0;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ng-md-icon#0;n#md-button#1;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ng-md-icon#0;n#md-button#2;n#md-fab-actions#0;n#md-toolbar#0;n#md-fab-toolbar#0;n#footer#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
