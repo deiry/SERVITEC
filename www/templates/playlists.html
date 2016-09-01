@@ -1,7 +1,11 @@
 <ion-view view-title="Servitec">
   <ion-content>
-      <footer flex="none" style="background-color:orange;color:white;">
-          <div ng-controller="ImageCtrl" ng-cloak>
+
+          <div ng-controller="MapCtrl" ng-cloak >
+
+            <leaflet lf-center="center"></leaflet>
+
+            <!--
               <md-fab-toolbar md-open="demo.isOpen" count="demo.count"
                               md-direction="{{demo.selectedDirection}}">
                   <md-fab-trigger class="align-with-text">
@@ -23,8 +27,8 @@
                       </md-fab-actions>
                   </md-toolbar>
               </md-fab-toolbar>
-
+-->
           </div>
-      </footer>
+
   </ion-content>
 </ion-view>
