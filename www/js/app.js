@@ -13,8 +13,8 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   ])
 
 
-.run(function($ionicPlatform) {
-    console.log('My app is ready');
+.run(function($ionicPlatform ) {
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -27,6 +27,7 @@ angular.module('servitec', ['ionic', 'starter.controllers',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
   });
 })
 
@@ -41,11 +42,19 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   })
 
     .state('app.map', {
-      url: '/map',
+    url: '/map',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/map.html',
+        controller: 'MapCtrl'
+      }
+    }
+  })
+    .state('app.cam', {
+      url: '/cam',
       views: {
         'menuContent': {
-          templateUrl: 'templates/map.html',
-          controller: 'MapCtrl'
+          templateUrl: 'templates/cam.html'
         }
       }
     })
