@@ -2,12 +2,6 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
   .controller('MapCtrl', function($scope){
 
-    $scope.isOpen = false;
-
-    $scope.demo = {
-      isOpen: false,
-      count: 0,
-      selectedDirection: 'left'}
 
     /*para centrar el mapa en esa longitud y latitud*/
     angular.extend($scope, {
