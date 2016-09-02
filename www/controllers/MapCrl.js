@@ -1,6 +1,6 @@
-angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons'])
+angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons','ngCordova'])
 
-  .controller('MapCtrl', function($scope){
+  .controller('MapCtrl', function($scope,$cordovaGeolocation){
 
     $scope.isOpen = false;
 
@@ -8,6 +8,8 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
       isOpen: false,
       count: 0,
       selectedDirection: 'left'}
+
+    /* localizacion del dispositivo gps*/
 
     /*para centrar el mapa en esa longitud y latitud*/
     angular.extend($scope, {

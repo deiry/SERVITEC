@@ -1,8 +1,9 @@
 <ion-view view-title="Servitec">
-
   <ion-content>
-    <div style="position: absolute; bottom: 0;right: 0;width: 100%">
 
+          <div class="divMap" ng-controller="MapCtrl">
+
+            <div style="position: absolute; bottom: 0;right: 0;width: 100%">
               <md-fab-toolbar md-open="demo.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
                 <md-fab-trigger class="align-with-text">
                   <md-button aria-label="menu" class="md-fab md-primary">
@@ -18,20 +19,17 @@
                     <md-button aria-label="label" class="md-icon-button">
                       <md-icon md-svg-src="img/icons/ic_label_24px.svg"></md-icon>
                     </md-button>
-                    <a href="#/app/cam">
-                      <md-button aria-label="photo" class="md-icon-button"">
-                      <ng-md-icon icon="photo_camera"></ng-md-icon>
-                      </md-button>
-                    </a>
-
+                    <md-button aria-label="photo" class="md-icon-button">
+                      <md-icon md-svg-src="img/icons/ic_photo_24px.svg"></md-icon>
+                    </md-button>
                   </md-fab-actions>
                 </md-toolbar>
               </md-fab-toolbar>
-    </div>
+            </div>
 
             <!--para mostrar el mapa y centrarlo -->
-    <leaflet center="center" widht="100%" height="100%"></leaflet>
-
+            
+          </div>
 
   </ion-content>
 </ion-view>
