@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('servitec', ['ionic', 'starter.controllers',
+var myApp = angular.module('servitec', ['ionic', 'starter.controllers',
   /**
    * Directivas para los Controladores
    */
@@ -13,7 +13,7 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   ])
 
 
-.run(function($ionicPlatform) {
+myApp.run(function($ionicPlatform) {
     console.log('My app is ready');
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -30,26 +30,39 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-
-    .state('app', {
+myApp.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider.state('app', {
     url: '/app',
-    abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
-  })
+  });
 
-    .state('app.map', {
-      url: '/map',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/map.html',
-          controller: 'MapCtrl'
-        }
-      }
-    })
-;
+   $stateProvider.state('map', {
+     url: '/map',
+     templateUrl: 'templates/map.html',
+     controller: 'MapCtrl'
+    });
+
+   $stateProvider.state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html'
+    });
+
+  $stateProvider.state('formulario', {
+    url: '/formulario',
+    templateUrl: 'templates/formulario.html'
+  });
+
+  $stateProvider.state('footer', {
+    url: '/footer',
+    templateUrl: 'templates/footer.html'
+  });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/map');
-});
+  $urlRouterProvider.otherwise('/login');
+})
+
+myApp.directive("footer", function(){
+  return{
+    templateUrl: 'templates/footer.html'
+  };
+})
