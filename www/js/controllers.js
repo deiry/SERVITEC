@@ -34,18 +34,6 @@ angular.module('starter.controllers', [])
   };
 })
 
-
-.controller('FABCtrl', function($scope){
-        $scope.isOpen = false;
-        $scope.demo = {
-            isOpen: false,
-            count: 0,
-            selectedDirection: 'left'
-        };
-})
-
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+;
 
 

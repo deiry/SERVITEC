@@ -5,7 +5,12 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('myApp', ['ionic', 'starter.controllers','MapCtrl','FabCtrl'])
+angular.module('servitec', ['ionic', 'starter.controllers',
+  /**
+   * Directivas para los Controladores
+   */
+  'MapCtrl','FabCtrl'
+  ])
 
 
 .run(function($ionicPlatform) {
