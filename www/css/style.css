@@ -1,3 +1,7 @@
 
 .starter.controllers md-fab-toolbar.md-right md-fab-trigger.align-with-text {
     left: 7px; }
+
+html, body {
+  height: 100%;
+}

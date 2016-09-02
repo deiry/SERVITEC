@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngMaterial','ngMessages','material.svgAssetsCache'])
+angular.module('starter.controllers', ['ngMaterial','ngMessages','material.svgAssetsCache','leaflet-directive'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
