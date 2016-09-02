@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngMaterial','ngMessages','material.svgAssetsCache','leaflet-directive'])
+angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -35,7 +35,6 @@ angular.module('starter.controllers', ['ngMaterial','ngMessages','material.svgAs
 })
 
 
-<<<<<<< HEAD
 .controller('FABCtrl', function($scope){
         $scope.isOpen = false;
         $scope.demo = {
@@ -44,8 +43,7 @@ angular.module('starter.controllers', ['ngMaterial','ngMessages','material.svgAs
             selectedDirection: 'left'
         };
 })
-=======
->>>>>>> refs/remotes/origin/Alejandro
+
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });

@@ -4,11 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-<<<<<<< HEAD
-angular.module('myApp', ['ionic', 'starter.controllers','ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons'])
-=======
-angular.module('myApp', ['ionic', 'starter.controllers','MapCtrl'])
->>>>>>> refs/remotes/origin/Alejandro
+
+angular.module('myApp', ['ionic', 'starter.controllers','MapCtrl','FabCtrl'])
+
 
 .run(function($ionicPlatform) {
     console.log('My app is ready');
