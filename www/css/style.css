@@ -3,9 +3,8 @@ h1{
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
     color: #ffffff;
 }
-md-fab-trigger{
-  right: 0;
-}
+.starter.controllers md-fab-toolbar.md-right md-fab-trigger.align-with-text {
+    left: 7px; }
 
 
 .bar-stable.bar.bar-header{
