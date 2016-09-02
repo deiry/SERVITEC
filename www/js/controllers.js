@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngMaterial','ngMessages','material.svgAssetsCache','leaflet-directive'])
+angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -34,9 +34,6 @@ angular.module('starter.controllers', ['ngMaterial','ngMessages','material.svgAs
   };
 })
 
-
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+;
 
 
