@@ -10,6 +10,27 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
       selectedDirection: 'left'}
 
     /* localizacion del dispositivo gps*/
+    var $lat = 40.095;
+    var $long = -3.823;
+    var posOptions = {timeout: 10000, enableHighAccuracy: false};
+
+    var coordenadas = $cordovaGeolocation.getCurrentPosition(posOptions).then(
+      function (position){
+        $lat  = position.coords.latitude
+        $long = position.coords.longitude
+
+
+        console.log($lat);
+        return coordenadas;
+
+      }, function(err) {
+        console.log(err)
+        // error
+
+      });
+
+      console.log($lat);
+
 
     /*para centrar el mapa en esa longitud y latitud*/
     angular.extend($scope, {
@@ -32,3 +53,4 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
       }
     });
   });
+
