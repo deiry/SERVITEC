@@ -58,7 +58,22 @@ angular.module('servitec', ['ionic', 'starter.controllers',
         }
       }
     })
+    .state('app.form', {
+      url: '/form',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/formulario.html'
+        }
+      }
+    })
 ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/map');
-});
+})
+
+.directive('footer', function(){
+  return{
+    templateUrl: 'templates/footer.html'
+  }
+
+})
