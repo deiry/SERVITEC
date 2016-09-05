@@ -48,7 +48,7 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1473048571739" expanded="true" signature="189:192" placeholder="{...}" />
+                <marker date="1473048996304" expanded="true" signature="189:192" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -143,8 +143,8 @@
         <option value="$PROJECT_DIR$/www/js/app.js" />
         <option value="$PROJECT_DIR$/www/templates/footer.html" />
         <option value="$PROJECT_DIR$/www/templates/map.html" />
-        <option value="$PROJECT_DIR$/www/templates/cam.html" />
         <option value="$PROJECT_DIR$/www/templates/formulario.html" />
+        <option value="$PROJECT_DIR$/www/templates/cam.html" />
       </list>
     </option>
   </component>
@@ -385,7 +385,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -447,7 +447,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <marker date="1473048571739" expanded="true" signature="189:192" placeholder="{...}" />
+            <marker date="1473048996304" expanded="true" signature="189:192" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -525,7 +525,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <marker date="1473048571739" expanded="true" signature="189:192" placeholder="{...}" />
+            <marker date="1473048996304" expanded="true" signature="189:192" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -567,7 +567,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <marker date="1473048571739" expanded="true" signature="189:192" placeholder="{...}" />
+            <marker date="1473048996304" expanded="true" signature="189:192" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -609,7 +609,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <marker date="1473048571739" expanded="true" signature="189:192" placeholder="{...}" />
+            <marker date="1473048996304" expanded="true" signature="189:192" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -643,7 +643,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <marker date="1473048571739" expanded="true" signature="189:192" placeholder="{...}" />
+            <marker date="1473048996304" expanded="true" signature="189:192" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -790,7 +790,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1473048571739" expanded="true" signature="189:192" placeholder="{...}" />
+            <marker date="1473048996304" expanded="true" signature="189:192" placeholder="{...}" />
           </folding>
         </state>
       </provider>
