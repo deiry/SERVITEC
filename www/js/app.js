@@ -9,7 +9,7 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   /**
    * Directivas para los Controladores
    */
-  'MapCtrl','FabCtrl'
+  'MapCtrl','FabCtrl', 'FormCtrl'
   ])
 
 
@@ -62,7 +62,8 @@ angular.module('servitec', ['ionic', 'starter.controllers',
       url: '/form',
       views: {
         'menuContent': {
-          templateUrl: 'templates/formulario.html'
+          templateUrl: 'templates/formulario.html',
+          controller: 'FormCtrl'
         }
       }
     })
@@ -70,10 +71,18 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/map');
 })
-
+//Directiva del footer con el template
 .directive('footer', function(){
   return{
     templateUrl: 'templates/footer.html'
   }
 
 })
+
+  .directive('header', function(){
+    return{
+      templateUrl: 'templates/header.html'
+    }
+
+  })
+
