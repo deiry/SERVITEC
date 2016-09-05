@@ -30,13 +30,13 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
             message: "Tú estas aquí.",
             draggable: true
           };
-          console.log(lat);
+
 
           angular.extend($scope, {
             center: {
               lat: lat,
               lng: long,
-              zoom: 16
+              zoom: 19
             },
             defaults: {
               scrollWheelZoom: false
@@ -62,7 +62,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
         });
     });
 
-      console.log(lat);
+
 
 
     /*para centrar el mapa en esa longitud y latitud*/
