@@ -1,7 +1,9 @@
-angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons'])
+angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons','ngCordova'])
 
-  .controller('MapCtrl', function($scope){
+  .controller('MapCtrl', function($scope,$cordovaGeolocation){
 
+
+    /* localizacion del dispositivo gps*/
 
     /*para centrar el mapa en esa longitud y latitud*/
     angular.extend($scope, {
@@ -12,6 +14,15 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
       },
       defaults: {
         scrollWheelZoom: false
+      },
+      layers:{
+        baselayers:{
+          osm:{
+            name: 'OpenStreetMap',
+            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            type: 'xyz'
+          }
+        }
       }
     });
   });

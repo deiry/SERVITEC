@@ -27,12 +27,7 @@ html, body {
   width: 100%;
   height: 100% !important;
 }
-
-.divMap{
-  width: 100%;
-  height: 100% !important;
-}
-
+/*leaflet-bottom es para poner el texto openstreetmap arrba*/
 .leaflet-bottom
 {
   top: 0 !important;
@@ -42,3 +37,27 @@ html, body {
   height: 100%;
 }
 
+/*para centrar vericalmente el icono del menu lateral*/
+md-icon {
+  vertical-align: top !important;
+
+}
+
+/*css para darle forma a la img del usuario en el menú*/
+.img-user-menu
+{
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 8%;
+  margin-right: 20%;
+  margin-bottom: 8%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+
+}
+/*icono para darle atras a las vistas*/
+.ion-android-arrow-back
+{
+  color: white;
+}
