@@ -2,7 +2,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
   .controller('MapCtrl', function($scope,$cordovaGeolocation){
 
-<<<<<<< HEAD
+    /*variables para la ubicacion del gps*/
     var lat = 40.095;
     var long = -3.823;
     /*icono para el marcador*/
@@ -16,7 +16,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
       red: {
         iconUrl: 'img/iconAgente.png',
         shadowUrl: 'img/iconAgenteSombra.png',
-        iconSize:     [25, 40], // size of the icon
+        iconSize:     [28, 40], // size of the icon
         shadowSize:   [25, 15], // size of the shadow
         iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
         shadowAnchor: [22 , 60],  // the same for the shadow
@@ -36,6 +36,32 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
     /* localizacion del dispositivo gps*/
 
     angular.element(document).ready(function () {
+      $scope.centrarMapPosicion();
+    });
+
+    /*para centrar el mapa en esa longitud y latitud*/
+    angular.extend($scope, {
+      center: {
+        lat: 40.095,
+        lng: -3.823,
+        zoom: 12
+      },
+      defaults: {
+        scrollWheelZoom: false
+      },
+      layers:{
+        baselayers:{
+          osm:{
+            name: 'OpenStreetMap',
+            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            type: 'xyz'
+          }
+        }
+      }
+    });
+
+    $scope.centrarMapPosicion = function()
+    {
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
 
       $cordovaGeolocation.getCurrentPosition(posOptions).then(
@@ -71,34 +97,5 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           // error
 
         });
-    });
-
-
-
-
-=======
-
-    /* localizacion del dispositivo gps*/
-
->>>>>>> origin/master
-    /*para centrar el mapa en esa longitud y latitud*/
-    angular.extend($scope, {
-      center: {
-        lat: 40.095,
-        lng: -3.823,
-        zoom: 12
-      },
-      defaults: {
-        scrollWheelZoom: false
-      },
-      layers:{
-        baselayers:{
-          osm:{
-            name: 'OpenStreetMap',
-            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            type: 'xyz'
-          }
-        }
-      }
-    });
+    }
   });
