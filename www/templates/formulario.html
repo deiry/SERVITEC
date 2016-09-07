@@ -1,0 +1,21 @@
+<ion-view view-title="Formulario">
+  <ion-content>
+
+
+    <md-content layout-padding="">
+
+      <form name="projectForm">
+        <md-input-container ng-repeat="i in opcMuestra">
+            <label>{{i.name}}</label>
+            <md-select name="opci" ng-model="x" required="">
+              <md-option value= {{x}} ng-repeat="x in i.opc">{{x}}</md-option>
+            </md-select>
+        </md-input-container>
+
+        </form>
+    </md-content>
+
+
+  </ion-content>
+
+</ion-view>
