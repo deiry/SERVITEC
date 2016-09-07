@@ -9,7 +9,5 @@ angular.module('FormCtrl',[])
    {name: "Visibilidad", opc : opc},
    {name: "Acción a tomar",opc : opc}
  ]
-
-
-
+  
 });
