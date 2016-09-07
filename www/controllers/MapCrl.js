@@ -2,7 +2,10 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
   .controller('MapCtrl', function($scope,$cordovaGeolocation){
 
+<<<<<<< HEAD
     /*variables para la ubicacion del gps*/
+=======
+>>>>>>> refs/remotes/origin/deiry
     var lat = 40.095;
     var long = -3.823;
     /*icono para el marcador*/
@@ -63,7 +66,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
     $scope.centrarMapPosicion = function()
     {
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
-
+      /* localizacion del dispositivo gps*/
       $cordovaGeolocation.getCurrentPosition(posOptions).then(
         function (position){
           lat  = position.coords.latitude
@@ -97,5 +100,32 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           // error
 
         });
+<<<<<<< HEAD
     }
+=======
+    });
+
+
+
+    /*para centrar el mapa en esa longitud y latitud*/
+    angular.extend($scope, {
+      center: {
+        lat: 40.095,
+        lng: -3.823,
+        zoom: 12
+      },
+      defaults: {
+        scrollWheelZoom: false
+      },
+      layers:{
+        baselayers:{
+          osm:{
+            name: 'OpenStreetMap',
+            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            type: 'xyz'
+          }
+        }
+      }
+    });
+>>>>>>> refs/remotes/origin/deiry
   });
