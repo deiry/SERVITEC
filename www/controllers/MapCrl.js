@@ -2,7 +2,6 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
   .controller('MapCtrl', function($scope,$cordovaGeolocation){
 
-<<<<<<< HEAD
     var lat = 40.095;
     var long = -3.823;
     /*icono para el marcador*/
@@ -76,11 +75,10 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
 
 
-=======
 
     /* localizacion del dispositivo gps*/
 
->>>>>>> origin/master
+
     /*para centrar el mapa en esa longitud y latitud*/
     angular.extend($scope, {
       center: {
