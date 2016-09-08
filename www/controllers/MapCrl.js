@@ -4,8 +4,10 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
     /*variables para la ubicacion del gps*/
 
-    var lat = 40.095;
-    var long = -3.823;
+    $scope.lat = 0;
+    $scope.lng = 0;
+    var lat;
+    var long;
     /*icono para el marcador*/
     var icons = {
       blue: {
@@ -23,47 +25,53 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
         shadowAnchor: [22 , 60],  // the same for the shadow
         popupAnchor:  [-10, -93] // point from which the popup should open relative to the iconAnchor
       }
-    }
+    };
 
-
-    $scope.isOpen = false;
-
-    $scope.demo = {
-      isOpen: false,
-      count: 0,
-      selectedDirection: 'left'}
+    $scope.layers = {
+      baselayers: {
+        osm: {
+          name: 'OpenStreetMap',
+            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            type: 'xyz'
+        }
+      }
+    };
+    $scope.center = {
+      zoom: 19
+    };
 
 
     /* localizacion del dispositivo gps*/
 
     angular.element(document).ready(function () {
       $scope.centrarMapPosicion();
+      angular.extend($scope, {
+        center: {
+          lat: $scope.lat,
+          lng: $scope.lng,
+          zoom: 19
+
+        },
+        defaults: {
+          scrollWheelZoom: false,
+          //zoomAnimation: true
+        },
+
+      });
     });
 
     /*para centrar el mapa en esa longitud y latitud*/
-    angular.extend($scope, {
-      center: {
-        lat: 40.095,
-        lng: -3.823,
-        zoom: 12
-      },
-      defaults: {
-        scrollWheelZoom: false
-      },
-      layers:{
-        baselayers:{
-          osm:{
-            name: 'OpenStreetMap',
-            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            type: 'xyz'
-          }
-        }
-      }
-    });
 
+
+    /************FUNCIONES****************/
+
+      /**
+       * esta funcion captura la posicion y centrar el mapa
+       */
     $scope.centrarMapPosicion = function()
     {
-      var posOptions = {timeout: 10000, enableHighAccuracy: false};
+
+      var posOptions = {timeout: 500, enableHighAccuracy: false};
       /* localizacion del dispositivo gps*/
       $cordovaGeolocation.getCurrentPosition(posOptions).then(
         function (position){
@@ -81,44 +89,35 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
           };
 
+          $scope.center.lat = lat;
+          $scope.center.lng = long;
+          $scope.center.zoom = 19;
 
-          angular.extend($scope, {
-            center: {
-              lat: lat,
-              lng: long,
-              zoom: 19
-            },
-            markers:{
-              mainMarker: angular.copy(mainMarker)
-            }
-          });
+          $scope.lat = lat;
+          $scope.lng = long;
 
-        }, function(err) {
-          alert('Por Favor Encienda el GPS');
+          $scope.markers = {
+            mainMarker: angular.copy(mainMarker)
+          }
+
+          //alert(lat);
+        },
+        function(err) {
+          alert('Por Favor Encienda el GPS'+err);
           // error
 
         });
+      //alert("latitud: "+$scope.lat+" longitud: "+$scope.long);
     }
 
-    /*para centrar el mapa en esa longitud y latitud*/
-    angular.extend($scope, {
-      center: {
-        lat: 40.095,
-        lng: -3.823,
-        zoom: 12
-      },
-      defaults: {
-        scrollWheelZoom: false
-      },
-      layers:{
-        baselayers:{
-          osm:{
-            name: 'OpenStreetMap',
-            url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            type: 'xyz'
-          }
-        }
-      }
-    });
+    $scope.centrarMap = function(){
+      $scope.center.lat = $scope.lat + 0,00001;
+      $scope.center.lng = $scope.lng + 0,00001;
+      $scope.center.zoom = 19;
+      alert("latitud: "+$scope.lat+" longitud: "+$scope.lng);
+
+      
+    }
+
 
   });
