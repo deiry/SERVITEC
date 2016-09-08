@@ -60,7 +60,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
       $scope.center.lng = $scope.lng;
       $scope.center.zoom = 19;
       alert("latitud: "+$scope.lat+" longitud: "+$scope.lng);
-      document.getElementById('map').setAttribute('St','center');
+      document.getElementById('map').setAttribute('centar',$scope.center);
     };
 
 
