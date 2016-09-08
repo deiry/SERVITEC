@@ -111,13 +111,12 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
     }
 
     $scope.centrarMap = function(){
-      $scope.center.lat = $scope.lat + 0,00001;
-      $scope.center.lng = $scope.lng + 0,00001;
+      $scope.center.lat = $scope.lat;
+      $scope.center.lng = $scope.lng;
       $scope.center.zoom = 19;
       alert("latitud: "+$scope.lat+" longitud: "+$scope.lng);
-
-      
-    }
+      document.getElementById('map').setAttribute('centar',$scope.center);
+    };
 
 
   });
