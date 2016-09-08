@@ -43,7 +43,6 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
             url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             type: 'xyz'
           }
-<<<<<<< HEAD
 
           //alert(lat);
         },
@@ -64,10 +63,10 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
     };
 
 
-=======
-        }
-      }
-    });
->>>>>>> origin/Alejandro
+
+
+
+
+
   });
 
