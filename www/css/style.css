@@ -61,3 +61,23 @@ md-icon {
 {
   color: white;
 }
+/*icono de la ubicacion actual*/
+.red {
+  border-radius: 120px;
+  opacity: .75;
+  background-color: #FF0000;
+}
+
+.blue {
+  border-radius: 120px;
+  opacity: .75;
+  background-color: #0000FF;
+}
+
+.iconColor{
+  color: rgb(63,81,181);
+}
+
+.colorApp{
+  color: rgb(63,81,181);
+}
