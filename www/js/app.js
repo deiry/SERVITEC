@@ -46,7 +46,7 @@ angular.module('servitec', ['ionic', 'starter.controllers',
     views: {
       'menuContent': {
         templateUrl: 'templates/map.html',
-        controller: 'MapTestCtrl'
+        controller: 'MapCtrl'
       }
     }
   })
