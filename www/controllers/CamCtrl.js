@@ -11,7 +11,7 @@ angular.module('CamCtrl', ['ngMaterial','ngMessages', 'material.svgAssetsCache',
       };
 
       Camera.getPicture(options).then(function(imageData) {
-        $scope.picture = imageData;;
+        $scope.picture = imageData;
       }, function(err) {
         console.log(err);
       });
@@ -28,7 +28,8 @@ angular.module('CamCtrl', ['ngMaterial','ngMessages', 'material.svgAssetsCache',
       };
 
       Camera.getPicture(options).then(function(imageData) {
-        $scope.picture = imageData;;
+        $scope.picture = imageData;
+
       }, function(err) {
         console.log(err);
       });

@@ -5,7 +5,10 @@
     </div>
     <button class = "button" ng-click = "takePicture()">Take Picture</button>
     <button class = "button" ng-click = "getPicture()">Open Gallery</button>
-    <img ng-src = "{{user.picture}}">
+    <div>
+      <img ng-src = "{{$scope.picture}}">
+    </div>
+    <a href="#/app/form"></a>
     <div style="position: absolute; bottom: 0;right: 0;width: 20%">
       <md-button aria-label="menu" class="md-fab md-primary">
         <ng-md-icon icon="done"></ng-md-icon>
