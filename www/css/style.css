@@ -30,7 +30,7 @@ html, body {
 /*leaflet-bottom es para poner el texto openstreetmap arrba*/
 .leaflet-bottom
 {
-  top: 0 !important;
+  /*top: 0 !important;*/
 }
 .scroll
 {
