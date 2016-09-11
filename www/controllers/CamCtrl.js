@@ -1,55 +1,41 @@
 angular.module('CamCtrl', ['ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons','ngCordova'])
-  .controller('CamCtrl', function($scope, Camera) {
+  .controller('CamCtrl', function($scope, $cordovaCamera) {
 
-    $scope.takePicture = function (options) {
-
-      var options = {
-        quality : 75,
-        targetWidth: 200,
-        targetHeight: 200,
-        sourceType: 1
-      };
-
-      Camera.getPicture(options).then(function(imageData) {
-        $scope.picture = imageData;
-      }, function(err) {
-        console.log(err);
-      });
-
+    var options = {
+      quality: 80,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: false,
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false,
+      correctOrientation:true
     };
 
-    $scope.getPicture = function (options) {
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      $scope.imgURI = "data:image/jpeg;base64," + imageData;
+    }, function(err) {
+      // error
+    });
 
+
+    $scope.choosePhoto = function () {
       var options = {
-        quality : 75,
-        targetWidth: 200,
-        targetHeight: 200,
-        sourceType: 0
+        quality: 100,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit: false,
+        encodingType: Camera.EncodingType.JPEG,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false
       };
 
-      Camera.getPicture(options).then(function(imageData) {
-        $scope.picture = imageData;
-
-      }, function(err) {
-        console.log(err);
+      $cordovaCamera.getPicture(options).then(function (imageData) {
+        $scope.imgURI = "data:image/jpeg;base64," + imageData;
+      }, function (err) {
+        // An error occured. Show a message to the user
       });
     };
-
-  })
-  .factory('Camera', function($q) {
-
-    return {
-      getPicture: function(options) {
-        var q = $q.defer();
-
-        navigator.camera.getPicture(function(result) {
-          q.resolve(result);
-        }, function(err) {
-          q.reject(err);
-        }, options);
-
-        return q.promise;
-      }
-    }
 
   });
+
