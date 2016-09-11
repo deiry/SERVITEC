@@ -31,6 +31,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           $scope.long=position.coords.longitude;
 
           marcador = new L.marker([$scope.lat, $scope.long],{draggable: true}, {icon: Icon});
+
           map = L.map('map').setView([$scope.lat, $scope.long], 19);
 
 
@@ -42,7 +43,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           /*escala del mapa*/
           L.control.scale({position: 'bottomleft'}).addTo(map);
           /*circulo de radio de presiocion del gps*/
-          L.circle([$scope.lat, $scope.long], 30).addTo(map);
+          L.circle([$scope.lat, $scope.long], 50).addTo(map);
 
 
 
@@ -52,8 +53,6 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
             var marker = event.target;
             var position = marker.getLatLng();
             console.log(position);
-            alert(position);
-
           });
 
         }, function(err) {

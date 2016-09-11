@@ -1,13 +1,13 @@
 <ion-view view-title="Formulario">
   <ion-content>
   <div layout="row">
-    <img src="/img/staticmap.png">
+    <img src="img/staticmap.png">
   </div>
     <md-content>
-      <div  class="row">
+      <div  class="row" ng-repeat="i in opcMuestra">
         <div class="col col-50">
           <form name="projectForm" flex-offset="10" flex="66">
-            <md-input-container ng-repeat="i in opcMuestra" ng-if="($index%2 == 0)">
+            <md-input-container >
               <label>{{i.name}}</label>
               <md-select name="opci" ng-model="x" required="">
                 <md-option value= {{x}} ng-repeat="x in i.opc">{{x}}</md-option>
@@ -16,12 +16,12 @@
 
           </form>
         </div>
-        <div class="col col-50">
+        <div class="col col-50" ng-if="i.name1.length > 0">
           <form name="projectForm" flex-offset="10" flex="66">
-            <md-input-container ng-repeat="i in opcMuestra"  ng-if="($index%2 != 0)">
-              <label>{{i.name}}</label>
+            <md-input-container >
+              <label>{{i.name1}}</label>
               <md-select name="opci" ng-model="x" required="">
-                <md-option value= {{x}} ng-repeat="x in i.opc">{{x}}</md-option>
+                <md-option value= {{x}} ng-repeat="x in i.opc1">{{x}}</md-option>
               </md-select>
             </md-input-container>
 
