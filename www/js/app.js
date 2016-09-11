@@ -9,7 +9,7 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   /**
    * Directivas para los Controladores
    */
-  'MapCtrl','FabCtrl', 'FormCtrl'
+  'MapCtrl','FabCtrl', 'FormCtrl','CamCtrl'
   ])
 
 
@@ -54,7 +54,8 @@ angular.module('servitec', ['ionic', 'starter.controllers',
       url: '/cam',
       views: {
         'menuContent': {
-          templateUrl: 'templates/cam.html'
+          templateUrl: 'templates/cam.html',
+          controller: 'CamCtrl'
         }
       }
     })
@@ -67,6 +68,7 @@ angular.module('servitec', ['ionic', 'starter.controllers',
         }
       }
     })
+
 ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/map');
