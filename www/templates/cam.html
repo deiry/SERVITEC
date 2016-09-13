@@ -1,10 +1,18 @@
-<ion-view view-title="Servitec">
+<ion-view view-title="Camara">
   <ion-content>
-    <div class="divMap" ng-controller="MapCtrl">
-      <hi>Camara</hi>
-    </div>
 
-   <!--Directiva del footer-->
-   <div footer></div>
+    <!--<button class = "button" ng-click = "takePicture()">Take Picture</button>
+    <button class = "button" ng-click = "choosePhoto()">Open Gallery</button>-->
+    <div>
+      <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="width: 100%; height: auto">
+
+    </div>
+    <a href="#/app/form">
+      <div style="position: absolute; bottom: 3%;right: 0;width: 20%">
+        <md-button aria-label="menu" class="md-fab md-primary colorApp" >
+          <ng-md-icon icon="done"></ng-md-icon>
+        </md-button>
+      </div>
+    </a>
   </ion-content>
 </ion-view>
