@@ -4,10 +4,11 @@
     <img src="/img/staticmap.png">
   </div>
     <md-content>
-      <div  class="row">
-        <div class="col col-50">
+
+     <div class="row" ng-repeat="i in opcMuestra" ng-if="$even">
+        <div flex class="col col-50" >
           <form name="projectForm" flex-offset="10" flex="66">
-            <md-input-container ng-repeat="i in opcMuestra" ng-if="($index%2 == 0)">
+            <md-input-container>
               <label>{{i.name}}</label>
               <md-select name="opci" ng-model="x" required="">
                 <md-option value= {{x}} ng-repeat="x in i.opc">{{x}}</md-option>
@@ -15,20 +16,9 @@
             </md-input-container>
 
           </form>
-        </div>
-        </div>
-     <div class="row">
-        <div class="col col-50">
-          <form name="projectForm" flex-offset="10" flex="66">
-            <md-input-container ng-repeat="i in opcMuestra"  ng-if="($index%2 != 0)">
-              <label>{{i.name}}</label>
-              <md-select name="opci" ng-model="x" required="">
-                <md-option value= {{x}} ng-repeat="x in i.opc">{{x}}</md-option>
-              </md-select>
-            </md-input-container>
 
-          </form>
         </div>
+
 
 
 
