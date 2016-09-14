@@ -1,55 +1,25 @@
 angular.module('CamCtrl', ['ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons','ngCordova'])
-  .controller('CamCtrl', function($scope, Camera) {
+  .controller('CamCtrl', function($scope, $cordovaCamera) {
 
-    $scope.takePicture = function (options) {
-
+    angular.element(document).ready(function () {
       var options = {
-        quality : 75,
-        targetWidth: 200,
-        targetHeight: 200,
-        sourceType: 1
+        quality: 100,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        allowEdit: false,
+        encodingType: Camera.EncodingType.JPEG,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: true,
+        correctOrientation:true
       };
 
-      Camera.getPicture(options).then(function(imageData) {
-        $scope.picture = imageData;
+      $cordovaCamera.getPicture(options).then(function(imageData) {
+        $scope.imgURI = "data:image/jpeg;base64," + imageData;
       }, function(err) {
-        console.log(err);
+        // error
       });
+    });
 
-    };
-
-    $scope.getPicture = function (options) {
-
-      var options = {
-        quality : 75,
-        targetWidth: 200,
-        targetHeight: 200,
-        sourceType: 0
-      };
-
-      Camera.getPicture(options).then(function(imageData) {
-        $scope.picture = imageData;
-
-      }, function(err) {
-        console.log(err);
-      });
-    };
-
-  })
-  .factory('Camera', function($q) {
-
-    return {
-      getPicture: function(options) {
-        var q = $q.defer();
-
-        navigator.camera.getPicture(function(result) {
-          q.resolve(result);
-        }, function(err) {
-          q.reject(err);
-        }, options);
-
-        return q.promise;
-      }
-    }
 
   });
+
