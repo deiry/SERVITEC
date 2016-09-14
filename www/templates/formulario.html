@@ -17,7 +17,7 @@
           <div  class="row" ng-repeat="i in opcMuestra">
             <div class="col col-50">
               <form name="projectForm" flex-offset="10" flex="66">
-                <md-input-container >
+                <md-input-container>
                   <label>{{i.name}}</label>
                   <md-select name="opci" ng-model="x" required="">
                     <md-option value= {{x}} ng-repeat="x in i.opc">{{x}}</md-option>
