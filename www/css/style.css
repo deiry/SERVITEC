@@ -80,3 +80,9 @@ md-icon {
 }
 
 #map {widh: 50px;height: 580px;}
+
+/*para hacer los combobox mas grandes en el formulario*/
+md-input-container
+{
+  width: 80%;
+}

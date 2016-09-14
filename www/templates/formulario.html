@@ -1,16 +1,23 @@
 <ion-view view-title="Formulario">
   <ion-content>
 
-    <md-content>
-      <div style="width: 100%; height: 100%">
+    <md-content style="height: 100%">
+
         <div style="width: 100%; height: 50%; background-color: #3e4f56" >
           <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="width: auto; height: 100%;margin-left: 25%;">
+
+            <div style="position: absolute; bottom: 50%;right: 0;">
+              <md-button aria-label="menu" class="md-fab md-primary colorApp" ng-click="tomarFoto()" >
+                <ng-md-icon icon="add_a_photo"></ng-md-icon>
+              </md-button>
+            </div>
+
         </div>
         <div style="width: 100%; height: 50%">
           <div  class="row" ng-repeat="i in opcMuestra">
             <div class="col col-50">
               <form name="projectForm" flex-offset="10" flex="66">
-                <md-input-container >
+                <md-input-container>
                   <label>{{i.name}}</label>
                   <md-select name="opci" ng-model="x" required="">
                     <md-option value= {{x}} ng-repeat="x in i.opc">{{x}}</md-option>
@@ -19,34 +26,26 @@
 
               </form>
             </div>
-            <div class="col col-50" ng-if="i.name1.length > 0">
 
+            <div class="col col-50" ng-if="i.name1.length > 0">
               <form name="projectForm" flex-offset="10" flex="66">
                 <md-input-container >
                   <label>{{i.name1}}</label>
-                  <md-select name="opci" ng-model="x" required="">
-                    <md-option value= {{x}} ng-repeat="x in i.opc1">{{x}}</md-option>
+                  <md-select name="opci" ng-model="y" required="">
+                    <md-option value= {{y}} ng-repeat="y in i.opc1">{{y}}</md-option>
                   </md-select>
                 </md-input-container>
 
               </form>
             </div>
           </div>
-      </div>
-
-
-
-
-
-  <!--      <form name="projectForm" flex-offset="10" flex="66">
-          <md-input-container ng-repeat="i in opcMuestra">
-            <label>{{i.name}}</label>
-            <md-select name="opci" ng-model="x" required="">
-              <md-option value= {{x}} ng-repeat="x in i.opc">{{x}}</md-option>
-            </md-select>
-          </md-input-container>
-
-        </form>-->
+          <a href="#/app/map">
+            <div style="position: absolute; bottom: 3%;right: 0;">
+              <md-button aria-label="menu" class="md-fab md-primary colorApp" >
+                <ng-md-icon icon="done"></ng-md-icon>
+              </md-button>
+            </div>
+          </a>
       </div>
 
     </md-content>
