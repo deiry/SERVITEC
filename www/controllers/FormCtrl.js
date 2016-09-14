@@ -9,6 +9,10 @@ angular.module('FormCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache',
     ];
 
     angular.element(document).ready(function () {
+     $scope.tomarFoto();
+    });
+
+    $scope.tomarFoto = function(){
       var options = {
         quality: 80,
         destinationType: Camera.DestinationType.DATA_URL,
@@ -19,14 +23,14 @@ angular.module('FormCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache',
         encodingType: Camera.EncodingType.JPEG,
         popoverOptions: CameraPopoverOptions,
         saveToPhotoAlbum: true,
-        correctOrientation:true
+        correctOrientation: true
       };
 
-      $cordovaCamera.getPicture(options).then(function(imageData) {
+      $cordovaCamera.getPicture(options).then(function (imageData) {
         $scope.imgURI = "data:image/jpeg;base64," + imageData;
-      }, function(err) {
-        // error
+      }, function (err) {
+        alert(err);
       });
-    });
+    };
 
   });
