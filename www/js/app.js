@@ -9,7 +9,7 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   /**
    * Directivas para los Controladores
    */
-  'MapCtrl','FabCtrl', 'FormCtrl','CamCtrl'
+  'MapCtrl', 'FormCtrl'
   ])
 
 
@@ -50,15 +50,6 @@ angular.module('servitec', ['ionic', 'starter.controllers',
       }
     }
   })
-    .state('app.cam', {
-      url: '/cam',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/cam.html',
-          controller: 'CamCtrl'
-        }
-      }
-    })
     .state('app.form', {
       url: '/form',
       views: {
