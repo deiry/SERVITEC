@@ -16,11 +16,9 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
       var Icon = L.icon({
         iconUrl: 'img/iconAgente.png',
-        iconSize:     [38, 95], // size of the icon
-        shadowSize:   [50, 64], // size of the shadow
-        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-        shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        iconSize:     [38, 55], // size of the icon
+        iconAnchor:   [20,50], // point of the icon which will correspond to marker's location
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
       });
       var marcador;
 
@@ -30,7 +28,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           $scope.lat = position.coords.latitude;
           $scope.long=position.coords.longitude;
 
-          marcador = new L.marker([$scope.lat, $scope.long],{draggable: true}, {icon: Icon});
+          marcador = new L.marker([$scope.lat, $scope.long], {icon: Icon, draggable: true});
 
           map = L.map('map').setView([$scope.lat, $scope.long], 19);
 
@@ -49,10 +47,15 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
           marcador.addTo(map);
 
-          marcador.on('dragend',function(event){
+          marcador.on('dragend',function(event) {
             var marker = event.target;
             var position = marker.getLatLng();
-            console.log(position);
+            console.log(position.lat);
+
+            if(kilometros($scope.lat,$scope.long,position.lat,position.lng) > 50)
+            {
+              marker.setLatLng([$scope.lat,$scope.long]);
+            }
           });
 
         }, function(err) {
@@ -70,3 +73,28 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
 
   });
+/**
+ * \fn getKilometros().
+ *
+ * \Description: Devuelve la distancia en kilomegtros entre dos puntos dados por su latitud y longitud
+ *
+ * \param (integer) lat1 : Latitud del punto 1
+ * \param (integer) long1 : Longitud del punto 1
+ * \param (integer) lat2 : Latitud del punto 2
+ * \param (integer) long2 : Longitud del punto 2
+ *
+ * \return (integer) Distancia en kilometros
+ *
+ **/
+
+function kilometros(lat1,lon1,lat2,lon2)
+{
+  rad = function(x) {return x*Math.PI/180;}
+  var R = 6378.137; //Radio de la tierra en km
+  var dLat = rad( lat2 - lat1 );
+  var dLong = rad( lon2 - lon1 );
+  var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLong/2) * Math.sin(dLong/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  var d = R * c *1000;
+  return d.toFixed(3); //Retorna tres decimales
+}
