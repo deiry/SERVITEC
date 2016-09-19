@@ -60,6 +60,16 @@ angular.module('servitec', ['ionic', 'starter.controllers',
       }
     })
 
+    .state('app.menu', {
+      url: '/menu',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/menu.html',
+          controller: 'MenuCtrl'
+        }
+      }
+    })
+
 ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/map');
