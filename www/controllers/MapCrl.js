@@ -1,6 +1,6 @@
 angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons','ngCordova'])
 
-  .controller('MapCtrl', function($scope,$cordovaGeolocation){
+  .controller('MapCtrl', function($scope,$cordovaGeolocation, LatLngMarcador){
     $scope.lat = 6.2518;
     $scope.long = -75.5636;
     var map;
@@ -28,6 +28,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           $scope.lat = position.coords.latitude;
           $scope.long=position.coords.longitude;
 
+
           marcador = new L.marker([$scope.lat, $scope.long], {icon: Icon, draggable: true});
 
           map = L.map('map').setView([$scope.lat, $scope.long], 19);
@@ -52,10 +53,17 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
             var position = marker.getLatLng();
             console.log(position.lat);
 
+            LatLngMarcador.lat = position.lat;
+            LatLngMarcador.lng = position.lng;
+
             if(kilometros($scope.lat,$scope.long,position.lat,position.lng) > 50)
             {
               marker.setLatLng([$scope.lat,$scope.long]);
+              LatLngMarcador.lat = $scope.lat;
+              LatLngMarcador.lng = $scope.long;
             }
+
+
           });
 
         }, function(err) {
