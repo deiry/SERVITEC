@@ -67,6 +67,8 @@ angular.module('servitec', ['ionic', 'starter.controllers',
 .service('LatLngMarcador',[function ()
 {
   return {
+    img: '',
+    icon: '',
     lat : 0,
     lng: 0
   }

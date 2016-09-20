@@ -44,9 +44,10 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           /*circulo de radio de presiocion del gps*/
           L.circle([$scope.lat, $scope.long], 50).addTo(map);
 
-
+          marcador.bindPopup('<h4>hola</h4>',{offset: (6,0)});
 
           marcador.addTo(map);
+
 
           marcador.on('dragend',function(event) {
             var marker = event.target;
