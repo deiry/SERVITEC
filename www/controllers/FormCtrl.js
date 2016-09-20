@@ -1,7 +1,7 @@
 var opc = ["Visible", "Regular", "No visible"];
 angular.module('FormCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons','ngCordova'])
 
-  .controller('FormCtrl', function($scope, $cordovaCamera){
+  .controller('FormCtrl', function($scope, $cordovaCamera, LatLngMarcador){
     $scope.opcMuestra = [
       {name: "Tablero", opc : opc, name1: "Pedestal",opc1 : opc},
       {name: "Anclaje", opc : opc, name1: "Visibilidad", opc1 : opc},
@@ -9,6 +9,7 @@ angular.module('FormCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache',
     ];
 
     angular.element(document).ready(function () {
+      console.log(LatLngMarcador);
      $scope.tomarFoto();
     });
 

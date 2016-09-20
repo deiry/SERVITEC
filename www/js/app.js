@@ -64,18 +64,13 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/map');
 })
-//Directiva del footer con el template
-.directive('footer', function(){
-  return{
-    templateUrl: 'templates/footer.html'
+.service('LatLngMarcador',[function ()
+{
+  return {
+    img: '',
+    icon: '',
+    lat : 0,
+    lng: 0
   }
-
-})
-
-  .directive('header', function(){
-    return{
-      templateUrl: 'templates/header.html'
-    }
-
-  })
-
+}
+  ])
