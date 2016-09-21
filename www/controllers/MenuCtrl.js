@@ -1,17 +1,18 @@
-angular.module('MenuCtrl',['ngMaterial'])
-.controller('MapCtrl', function($scope){
-  $scope.sections = [{
+angular.module('MenuCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons'])
+.controller('MenuCtrl', function($scope) {
+
+  $scope.sections = [ {
     name:'Deiry sofia Navas',
     type: 'toggle',
-    pages:[{
-      name: 'Perfil',
+    pages:[
+      {name: 'Perfil',
       type: 'link',
       icon: 'person'
-    },{
-      name: 'Configuracion',
+      },
+      {name: 'Configuracion',
       type: 'link',
       icon: 'settings'
-    },{
+      },{
       name: 'Ayuda',
       type: 'link',
       icon:  'help'
@@ -20,9 +21,7 @@ angular.module('MenuCtrl',['ngMaterial'])
       type: 'link',
       icon: 'logout'
     }]
-  }];
-
-  sections.push({
+  },{
     name: 'Historial',
     type: 'toggle',
     pages: [{
@@ -39,12 +38,15 @@ angular.module('MenuCtrl',['ngMaterial'])
       type: 'link',
       icon: 'list'
     }]
-  });
+  }];
+  $scope.collapseAll = function(data) {
+    for(var i in $scope.sections) {
+      if($scope.sections[i] != data) {
+        $scope.sections[i].expanded = false;
+      }
+    }
+    data.expanded  = !data.expanded;
+  };
 
-  sections.push({
-    name: 'Señales realizadas',
-    type: 'link',
-    templateUrl: 'map.html'
-  })
 
-})
+});

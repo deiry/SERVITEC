@@ -9,7 +9,7 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   /**
    * Directivas para los Controladores
    */
-  'MapCtrl', 'FormCtrl'
+  'MapCtrl', 'FormCtrl','MenuCtrl'
   ])
 
 
