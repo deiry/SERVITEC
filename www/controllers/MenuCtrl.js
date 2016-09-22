@@ -1,8 +1,12 @@
-angular.module('MenuCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons'])
-.controller('MenuCtrl', function($scope) {
+angular.module('MenuCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons']).config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  })
+.controller('MenuCtrl', function($scope,$mdDialog) {
 
   $scope.sections = [ {
-    name:'Deiry sofia Navas',
+    name:'Perfil',
     type: 'toggle',
     pages:[
       {name: 'Perfil',
@@ -45,8 +49,18 @@ angular.module('MenuCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache',
         $scope.sections[i].expanded = false;
       }
     }
-    data.expanded  = !data.expanded;
-  };
 
+
+  };
+  var vm = this;
+
+  this.announceClick = function(index) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('You clicked!')
+        .textContent('You clicked the menu item at index ' + index)
+        .ok('Nice')
+    );
+  };
 
 });
