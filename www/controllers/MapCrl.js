@@ -18,8 +18,8 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
     var IconSeñales = L.icon({
       iconUrl: 'img/iconSenalReglamentariaPare.png',
-      iconSize:     [38, 55], // size of the icon
-      iconAnchor:   [20,50], // point of the icon which will correspond to marker's location
+      iconSize:     [25, 45], // size of the icon
+      iconAnchor:   [15,43], // point of the icon which will correspond to marker's location
       popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
     });
 
