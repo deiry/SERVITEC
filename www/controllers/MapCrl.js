@@ -1,6 +1,6 @@
 angular.module('MapCtrl', ['ngCordova'])
 
-  .controller('MapCtrl', function($scope,$cordovaGeolocation){
+  .controller('MapCtrl', function($scope,$cordovaGeolocation, LatLngMarcador){
     $scope.lat = 6.2518;
     $scope.long = -75.5636;
     var map;
@@ -29,6 +29,7 @@ angular.module('MapCtrl', ['ngCordova'])
           $scope.lat = position.coords.latitude;
           $scope.long=position.coords.longitude;
 
+
           marcador = new L.marker([$scope.lat, $scope.long], {icon: Icon, draggable: true});
 
           map = L.map('map').setView([$scope.lat, $scope.long], 19);
@@ -44,19 +45,27 @@ angular.module('MapCtrl', ['ngCordova'])
           /!*circulo de radio de presiocion del gps*!/
           L.circle([$scope.lat, $scope.long], 50).addTo(map);
 
-
+          marcador.bindPopup('<h4>hola</h4>',{offset: (6,0)});
 
           marcador.addTo(map);
+
 
           marcador.on('dragend',function(event) {
             var marker = event.target;
             var position = marker.getLatLng();
             console.log(position.lat);
 
+            LatLngMarcador.lat = position.lat;
+            LatLngMarcador.lng = position.lng;
+
             if(kilometros($scope.lat,$scope.long,position.lat,position.lng) > 50)
             {
               marker.setLatLng([$scope.lat,$scope.long]);
+              LatLngMarcador.lat = $scope.lat;
+              LatLngMarcador.lng = $scope.long;
             }
+
+
           });
 
         }, function(err) {
