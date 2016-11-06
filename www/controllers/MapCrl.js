@@ -1,10 +1,11 @@
-angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons','ngCordova'])
+angular.module('MapCtrl', ['ngCordova'])
 
   .controller('MapCtrl', function($scope,$cordovaGeolocation, LatLngMarcador){
     $scope.lat = 6.2518;
     $scope.long = -75.5636;
     $scope.imgMap = "";
     var map;
+<<<<<<< HEAD
     var marcadorSeñal;
     var marcador;
     var tile;
@@ -24,6 +25,9 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
     });
 
 
+=======
+    var markerPosition;
+>>>>>>> refs/remotes/origin/Alejandro
 
     $scope.$on('$ionicView.beforeEnter', function(){
       console.log(LatLngMarcador);
@@ -81,10 +85,21 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
     $scope.mostrarMapa = function()
     {
+<<<<<<< HEAD
 
 
+=======
+      /*var posOptions = {timeout: 10000, enableHighAccuracy: false};
+      var Icon = L.icon({
+        iconUrl: 'img/iconAgente.png',
+        iconSize:     [38, 55], // size of the icon
+        iconAnchor:   [20,50], // point of the icon which will correspond to marker's location
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+      });
+      var marcador;
+>>>>>>> refs/remotes/origin/Alejandro
 
-      /* localizacion del dispositivo gps*/
+      /!* localizacion del dispositivo gps*!/
       $cordovaGeolocation.getCurrentPosition(posOptions).then(
         function (position){
           $scope.lat = position.coords.latitude;
@@ -93,10 +108,25 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           map.setView([$scope.lat, $scope.long], 19);                //cramos el mapa
                                     //asignamos la ubicacion gps al marcador
 
+<<<<<<< HEAD
           tile.addTo(map);
           /*escala del mapa*/
+=======
+
+          marcador = new L.marker([$scope.lat, $scope.long], {icon: Icon, draggable: true});
+
+          map = L.map('map').setView([$scope.lat, $scope.long], 19);
+
+
+          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+              /!*attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',*!/
+              maxZoom: 19
+          }).addTo(map);
+          /!*escala del mapa*!/
+>>>>>>> refs/remotes/origin/Alejandro
           L.control.scale({position: 'bottomleft'}).addTo(map);
-          /*circulo de radio de presiocion del gps*/
+          /!*circulo de radio de presiocion del gps*!/
           L.circle([$scope.lat, $scope.long], 50).addTo(map);
 
           marcador.addTo(map);
@@ -107,13 +137,30 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           alert('Por Favor Encienda el GPS');
           // error
 
-        });
+        });*/
+      var latLng = {lat: $scope.lat , lng: $scope.lng };
+
+      map = new google.maps.Map(document.getElementById('map'),{
+        zoom: 18,
+        center: {lat: 6.2518, lng: -75.5636},
+        disableDefaultUI: true,
+        scrollwheel: true
+      });
+
+      markerPosition = new google.maps.Marker({
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: {lat: 6.2518, lng: -75.5636},
+        map: map,
+        title: 'Hello World!'
+      });
+
 
     }
 
 
     $scope.centrarMapa = function(){
-      map.locate({setView: true, maxZoom: 19});
+      //map.locate({setView: true, maxZoom: 19});
     }
 
 
