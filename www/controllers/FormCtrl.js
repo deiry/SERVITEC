@@ -9,7 +9,6 @@ angular.module('FormCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache',
     ];
 
     angular.element(document).ready(function () {
-      console.log(LatLngMarcador);
      $scope.tomarFoto();
     });
 
@@ -29,6 +28,8 @@ angular.module('FormCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache',
 
       $cordovaCamera.getPicture(options).then(function (imageData) {
         $scope.imgURI = "data:image/jpeg;base64," + imageData;
+        LatLngMarcador.img = $scope.imgURI;
+
       }, function (err) {
         alert(err);
       });
