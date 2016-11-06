@@ -29,6 +29,18 @@ angular.module('MapCtrl', ['ngCordova'])
         scrollwheel: true
       });
 
+      var circle = new google.maps.Circle({
+        strokeColor: '##063971',
+        strokeOpacity: 0.5,
+        strokeWeight: 3,
+        fillColor: '##063971',
+        fillOpacity: 0.1,
+        map: map,
+        center: {lat: 6.2518, lng: -75.5636} ,
+        radius: 100,
+        clickable: false
+      });
+
       markerPosicion = new google.maps.Marker({
         draggable: true,
         animation: google.maps.Animation.DROP,
