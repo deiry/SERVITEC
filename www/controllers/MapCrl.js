@@ -1,9 +1,10 @@
-angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons','ngCordova'])
+angular.module('MapCtrl', ['ngCordova'])
 
   .controller('MapCtrl', function($scope,$cordovaGeolocation){
     $scope.lat = 6.2518;
     $scope.long = -75.5636;
     var map;
+    var markerPosition;
 
     angular.element(document).ready(function () {
 
@@ -13,7 +14,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
     $scope.mostrarMapa = function()
     {
-      var posOptions = {timeout: 10000, enableHighAccuracy: false};
+      /*var posOptions = {timeout: 10000, enableHighAccuracy: false};
       var Icon = L.icon({
         iconUrl: 'img/iconAgente.png',
         iconSize:     [38, 55], // size of the icon
@@ -22,7 +23,7 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
       });
       var marcador;
 
-      /* localizacion del dispositivo gps*/
+      /!* localizacion del dispositivo gps*!/
       $cordovaGeolocation.getCurrentPosition(posOptions).then(
         function (position){
           $scope.lat = position.coords.latitude;
@@ -35,12 +36,12 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
 
           L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             {
-              /*attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',*/
+              /!*attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',*!/
               maxZoom: 19
           }).addTo(map);
-          /*escala del mapa*/
+          /!*escala del mapa*!/
           L.control.scale({position: 'bottomleft'}).addTo(map);
-          /*circulo de radio de presiocion del gps*/
+          /!*circulo de radio de presiocion del gps*!/
           L.circle([$scope.lat, $scope.long], 50).addTo(map);
 
 
@@ -62,12 +63,29 @@ angular.module('MapCtrl', ['leaflet-directive', 'ngMaterial','ngMessages', 'mate
           alert('Por Favor Encienda el GPS');
           // error
 
-        });
+        });*/
+      var latLng = {lat: $scope.lat , lng: $scope.lng };
+
+      map = new google.maps.Map(document.getElementById('map'),{
+        zoom: 18,
+        center: {lat: 6.2518, lng: -75.5636},
+        disableDefaultUI: true,
+        scrollwheel: true
+      });
+
+      markerPosition = new google.maps.Marker({
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: {lat: 6.2518, lng: -75.5636},
+        map: map,
+        title: 'Hello World!'
+      });
+
 
     }
 
     $scope.centrarMapa = function(){
-      map.locate({setView: true, maxZoom: 19});
+      //map.locate({setView: true, maxZoom: 19});
     }
 
 
