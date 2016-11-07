@@ -9,7 +9,7 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   /**
    * Directivas para los Controladores
    */
-  'MapCtrl', 'FormCtrl'
+  'MapCtrl', 'FormCtrl','MenuCtrl'
   ])
 
 
@@ -56,6 +56,26 @@ angular.module('servitec', ['ionic', 'starter.controllers',
         'menuContent': {
           templateUrl: 'templates/formulario.html',
           controller: 'FormCtrl'
+        }
+      }
+    })
+
+    .state('app.menu', {
+      url: '/menu',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/menu.html',
+          controller: 'MenuCtrl'
+        }
+      }
+    })
+
+    .state('app.login', {
+      url: '/login',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/login.html',
+          controller: 'MenuCtrl'
         }
       }
     })
