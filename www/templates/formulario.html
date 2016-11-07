@@ -3,49 +3,79 @@
 
     <md-content style="height: 100%">
 
-        <div style="width: 100%; height: 50%; background-color: #3e4f56" >
-          <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="width: auto; height: 100%;margin-left: 25%;">
+      <div class="z-position-1" style="width: 100%; height: 40%; background-color: #3e4f56">
+        <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="width: auto; height: 100%;margin-left: 25%;">
 
-            <div style="position: absolute; bottom: 50%;right: 0;">
-              <md-button aria-label="menu" class="md-fab md-primary colorApp" ng-click="tomarFoto()" >
-                <ng-md-icon icon="add_a_photo"></ng-md-icon>
-              </md-button>
-            </div>
+        <div style="position: absolute; bottom: 60%;right: 0;">
+          <md-button aria-label="menu" class="md-fab md-primary colorApp" ng-click="tomarFoto()">
+            <ng-md-icon icon="add_a_photo"></ng-md-icon>
+          </md-button>
+        </div>
+      </div>
+
+      <div class="z-position-1" style="width: 100%; height: 60%;bottom: 0">
+        <div class="row">
+          <div class="col">
+            <md-input-container>
+              <label>Selecciona la categoria</label>
+              <md-select name="opci" ng-model="x" required="">
+                <md-option value={{j}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id)">{{j.name}}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+        <div class="row" ng-repeat="i in opcMuestra">
+          <div class="col col-50">
+            <form name="projectForm" flex-offset="10" flex="66">
+              <md-input-container>
+                <label>{{i.name}}</label>
+                <md-select name="opci" ng-model="x" required="">
+                  <md-option value={{x}} ng-repeat="x in i.opc">{{x}}</md-option>
+                </md-select>
+              </md-input-container>
+
+            </form>
+          </div>
+
+          <div class="col col-50" ng-if="i.name1.length > 0">
+            <form name="projectForm" flex-offset="10" flex="66">
+              <md-input-container>
+                <label>{{i.name1}}</label>
+                <md-select name="opci" ng-model="y" required="">
+                  <md-option value={{y}} ng-repeat="y in i.opc1">{{y}}</md-option>
+                </md-select>
+              </md-input-container>
+
+            </form>
+          </div>
+        </div>
+        <a href="#/app/map">
+          <div style="position: absolute; bottom: 3%;right: 0;">
+            <md-button aria-label="menu" class="md-fab md-primary colorApp">
+              <ng-md-icon icon="done"></ng-md-icon>
+            </md-button>
+          </div>
+        </a>
+      </div>
+
+     <div id="contenedorTipoSenal" class="z-position-2"
+           style="background-color: white; width: 100%;height: 100%; display: none;">
+        <div class="row" ng-repeat="senal in senales | filter:{categoria: categoriaFiltro}" ng-if="$index % 3 == 0">
+          <div class="col-33 item-senal">
+            <img ng-src="{{senales[$index].img}}">
+            <p>{{senales[$index].nombre}}</p>
+          </div>
+          <div class="col-33 item-senal">
+            <img ng-src="{{senales[$index + 1].img}}">
+            <p>{{senales[$index + 1].nombre}}</p>
+          </div>
+          <div class="col-33 item-senal">
+            <img ng-src="{{senales[$index + 2].img}}">
+            <p>{{senales[$index + 2].nombre}}</p>
+          </div>
 
         </div>
-        <div style="width: 100%; height: 50%">
-          <div  class="row" ng-repeat="i in opcMuestra">
-            <div class="col col-50">
-              <form name="projectForm" flex-offset="10" flex="66">
-                <md-input-container>
-                  <label>{{i.name}}</label>
-                  <md-select name="opci" ng-model="x" required="">
-                    <md-option value= {{x}} ng-repeat="x in i.opc">{{x}}</md-option>
-                  </md-select>
-                </md-input-container>
 
-              </form>
-            </div>
-
-            <div class="col col-50" ng-if="i.name1.length > 0">
-              <form name="projectForm" flex-offset="10" flex="66">
-                <md-input-container >
-                  <label>{{i.name1}}</label>
-                  <md-select name="opci" ng-model="y" required="">
-                    <md-option value= {{y}} ng-repeat="y in i.opc1">{{y}}</md-option>
-                  </md-select>
-                </md-input-container>
-
-              </form>
-            </div>
-          </div>
-          <a href="#/app/map">
-            <div style="position: absolute; bottom: 3%;right: 0;">
-              <md-button aria-label="menu" class="md-fab md-primary colorApp" >
-                <ng-md-icon icon="done"></ng-md-icon>
-              </md-button>
-            </div>
-          </a>
       </div>
 
     </md-content>

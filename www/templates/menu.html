@@ -1,4 +1,4 @@
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="false" ng-controller="MenuCtrl">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
@@ -19,40 +19,20 @@
       <h1 class="title">Menú</h1>
     </ion-header-bar>
     <ion-content>
-      <!--  imagen de usuarios  -->
-      <img src="./img/usert.png" class="img-user-menu rounded">
-
-      <!-- botones del menú -->
-      <div class="list">
-
-        <a class="item item-icon-left" href="#">
-          <i class="icon ion-email"></i>
-          Check mail
-        </a>
-
-        <a class="item item-icon-left item-icon-right" href="#">
-          <i class="icon ion-chatbubble-working"></i>
-          Call Ma
-          <i class="icon ion-ios-telephone-outline"></i>
-        </a>
-
-        <a class="item item-icon-left" href="#">
-          <i class="icon ion-mic-a"></i>
-          Record album
-    <span class="item-note">
-      Grammy
-    </span>
-        </a>
-
-        <a class="item item-icon-left" href="#">
-          <i class="icon ion-person-stalker"></i>
-          Friends
-          <span class="badge badge-assertive">0</span>
-        </a>
+      <div>
+        <img src="./img/usert.png" class="img-user-menu rounded">
+      </div>
+      <div class="md-accordion" ng-repeat="section in sections">
+        <md-toolbar>
+          <div class="md-toolbar-tools" ng-model=collapse>
+            <h2><span class="ng-binding">{{section.name}}</span></h2>
+          </div>
+        </md-toolbar>
+        <div ng-repeat="i in section.pages" ng-show="collapse">
+          <p ng-class='{open:show}'>{{i.name}}</p>
+        </div>
 
       </div>
-
-
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
