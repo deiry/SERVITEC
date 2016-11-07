@@ -173,12 +173,21 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         alert(err);
       });
     };
-
+    /**
+     * despliega la vista para seleccionar la señal de transito
+     * @param id  tiene el id de la categoria de la señal
+     * 1: si es reglamentaria, 2: si es preventiva, 3: si es informativa
+       */
     $scope.seleccionCategoria = function(id)
     {
-      $('#contenedorTipoSenal').slideToggle(200);
+      $('#contenedorTipoSenal').slideDown(400);
       $scope.categoriaFiltro = id;
       console.log(id);
-    }
+    };
+
+    $scope.seleccionSenal = function(id){
+      console.log(id);
+      $('#contenedorTipoSenal').slideUp(400);
+    };
 
   });
