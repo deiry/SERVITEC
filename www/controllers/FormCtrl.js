@@ -9,6 +9,73 @@ angular.module('FormCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache',
       {name: "Anclaje", opc : opc,
          name2: "Visibilidad", opc2 : opc2}
     ];
+        $scope.categoria =[
+            {
+              name: "Señal Reglamentaria",
+              icon:"hola"
+            },
+            {
+                name: "Señal Preventiva",
+                icon:"hola"
+            },
+            {
+                name: "Señal Informativa",
+                icon:"hola"
+            }];
+
+        $scope.SR= [{
+            "01": {
+                "nombre": "01: Pare",
+                    "icon": "hola"
+            },
+            "02": {
+                "nombre": "02: Ceda el paso",
+                    "icon": "hola"
+            },
+            "03": {
+                "nombre": "03: Siga de frente",
+                    "icon": "hola"
+            },
+            "04": {
+                "nombre": "04: No pase",
+                    "icon": "hola"
+            },
+            "05": {
+                "nombre": "05: Giro a la izq. solamente",
+                    "icon": "hola"
+            },
+            "06": {
+                "nombre": "06: Prohibido girar a la izq.",
+                    "icon": "hola"
+            }
+        }]
+
+        $scope.SP= [{
+            "01": {
+                "nombre": "01: Curva cerrada a la izq.",
+                "icon": "hola"
+            },
+            "02": {
+                "nombre": "02: Curva cerrada a la der.",
+                "icon": "hola"
+            },
+            "03": {
+                "nombre": "03: Curva pronunciada a la izq.",
+                "icon": "hola"
+            },
+            "04": {
+                "nombre": "04: Curva pronunciada a la der.",
+                "icon": "hola"
+            },
+            "05": {
+                "nombre": "05: Curva y contracurva cerrada primera a la izq.",
+                "icon": "hola"
+            },
+            "06": {
+                "nombre": "06: Curva y contracurva cerrada primera a la der.",
+                "icon": "hola"
+            }
+        }]
 
     angular.element(document).ready(function () {
      $scope.tomarFoto();
