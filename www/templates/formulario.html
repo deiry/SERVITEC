@@ -5,6 +5,31 @@
   </div>
     <md-content>
 
+
+        <div class="column" ng-repeat="i in opcMuestra" ng-repeat>
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>{{i.name}}</label>
+                    <md-select name="type" ng-model="project.type" required="">
+                        <md-option ng-repeat="x in i.opc">{{x}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex="50">
+                    <label>{{i.name2}}</label>
+                    <md-select name="type" ng-model="project.type" required="">
+                        <md-option ng-repeat="x in i.opc2">{{x}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+        </div>
+
+
+
+
+
+
+  <!--
      <div class="row" ng-repeat="i in opcMuestra" ng-if="$even">
         <div flex class="col col-50" >
           <form name="projectForm" flex-offset="10" flex="66">
@@ -18,11 +43,7 @@
           </form>
 
         </div>
-
-
-
-
-  <!--      <form name="projectForm" flex-offset="10" flex="66">
+  <form name="projectForm" flex-offset="10" flex="66">
           <md-input-container ng-repeat="i in opcMuestra">
             <label>{{i.name}}</label>
             <md-select name="opci" ng-model="x" required="">

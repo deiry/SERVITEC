@@ -1,11 +1,13 @@
-var opc = ["Visible", "Regular", "No visible"];
+var opc = ["Bueno", "Regular", "Malo"];
+var opc2 = ["No Visible", "Poco visible", "Visible"];
 angular.module('FormCtrl',['ngMaterial','ngMessages', 'material.svgAssetsCache','ngMdIcons','ngCordova'])
 
   .controller('FormCtrl', function($scope, $cordovaCamera, LatLngMarcador){
     $scope.opcMuestra = [
-      {name: "Tablero", opc : opc, name1: "Pedestal",opc1 : opc},
-      {name: "Anclaje", opc : opc, name1: "Visibilidad", opc1 : opc},
-      {name: "Acción a tomar",opc : opc}
+      {name: "Tablero", opc : opc,
+        name2: "Pedestal",opc2 : opc},
+      {name: "Anclaje", opc : opc,
+         name2: "Visibilidad", opc2 : opc2}
     ];
 
     angular.element(document).ready(function () {
