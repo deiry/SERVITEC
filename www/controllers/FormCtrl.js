@@ -30,8 +30,8 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
     $scope.senales = [
       {
         id: 1,
-        nombre: "01: Pare",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Pare",
+        img: "img/sr-01.png",
         categoria: 1
       },
       {
