@@ -2,17 +2,25 @@ angular.module('MapCtrl', ['ngCordova'])
 
   .controller('MapCtrl', function($scope,$cordovaGeolocation, LatLngMarcador){
     $scope.lat = 6.2518;
-    $scope.long = -75.5636;
+    $scope.lng = -75.5636;
     var map;
     var markerPosicion;
+    var latLng;
 
 
 
     angular.element(document).ready(function ()
     {
-
+      latLng = new google.maps.LatLng({lat: $scope.lat, lng: $scope.lng});
       $scope.mostrarMapa();
-
+      /*evento para el marcador*/
+      markerPosicion.addListener('dragend', function() {
+        var lat = this.getPosition().lat();
+        var lng = this.getPosition().lng();
+        if(kilometros(lat,lng,$scope.lat,$scope.lng) > 100){
+          markerPosicion.setPosition(latLng);
+        }
+      });
       });
 
 
@@ -26,7 +34,8 @@ angular.module('MapCtrl', ['ngCordova'])
         zoom: 18,
         center: {lat: 6.2518, lng: -75.5636},
         disableDefaultUI: true,
-        scrollwheel: true
+        scrollwheel: true,
+        clickableIcons: false
       });
 
       var circle = new google.maps.Circle({
