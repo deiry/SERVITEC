@@ -121,6 +121,7 @@ md-input-container
 .item-senal{
   background-color: white;
   margin-right: 1%;
+  width: 33%;
   -webkit-box-shadow: -1px 4px 16px -4px rgba(0,0,0,0.75);
   -moz-box-shadow: -1px 4px 16px -4px rgba(0,0,0,0.75);
   box-shadow: -1px 4px 16px -4px rgba(0,0,0,0.75);
@@ -131,4 +132,11 @@ md-input-container
 }
 .row-senal{
   margin-top: 1% !important;
+}
+
+#contenedorTipoSenal{
+  background-color: #bbbbbb;
+  width: 100%;
+  height: auto;
+  display: none;
 }

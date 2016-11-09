@@ -62,14 +62,13 @@
         </a>
 
 
-    </md-content>
+</div>
 
 
-    </div>
 
      <div id="contenedorTipoSenal" class="z-position-2"
-           style="background-color: #bbbbbb; width: 100%;height: 100%; display: none;">
-        <div ng-repeat="senal in senales | filter:{categoria: categoriaFiltro}" ng-if="$index % 3 == 0" class="row row-senal">
+           style="">
+        <div ng-repeat="senal in senales" ng-if="$index % 3 == 0" class="row row-senal">
           <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index].id)">
             <img ng-src="{{senales[$index].img}}">
             <p>{{senales[$index].nombre}}</p>
@@ -86,6 +85,9 @@
         </div>
 
       </div>
+
+
+    </md-content>
 
 
 
