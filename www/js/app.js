@@ -7,6 +7,10 @@
 
 angular.module('servitec', ['ionic', 'starter.controllers',
   /**
+   * Directivas para los servicios
+   */
+  'reporteSenalService',
+  /**
    * Directivas para los Controladores
    */
   'MapCtrl', 'FormCtrl','MenuCtrl'
