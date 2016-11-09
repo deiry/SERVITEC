@@ -31,7 +31,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       {
         id: 1,
         nombre: "01: Pare",
-        img: "img/iconSenalReglamentaria.PNG",
+        img: "img/senales/sr-03.png",
         categoria: 1
       },
       {
