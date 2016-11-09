@@ -31,119 +31,119 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       {
         id: 1,
         nombre: "Pare",
-        img: "img/sr-01.png",
+        img: "img/senales/sr-01.png",
         categoria: 1
       },
       {
         id: 2,
-        nombre: "02: Ceda el paso",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Ceda el paso",
+        img: "img/senales/sr-02.png",
         categoria: 1
       },
       {
         id: 3,
-        nombre: "03: Siga de frente",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Siga de frente",
+        img: "img/senales/sr-03.png",
         categoria: 1
       },
       {
         id: 4,
-        nombre: "04: No pase",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "No pase",
+        img: "img/senales/sr-04.png",
         categoria: 1
       },
       {
         id: 5,
         nombre: "05: Giro a la izq. solamente",
-        img: "img/iconSenalReglamentaria.PNG",
+        img: "img/senales/sr-05.png",
         categoria: 1
       },
       {
         id: 6,
-        nombre: "06: Prohibido girar a la izq.",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Prohibido girar a la izq.",
+        img: "img/senales/sr-06.png",
         categoria: 1
       },
       {
         id: 1,
-        nombre: "01: Curva cerrada a la izq.",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Curva cerrada a la izq.",
+        img: "img/senales/sp-01.png",
         categoria: 2
       },
       {
         id: 2,
-        nombre: "02: Curva cerrada a la der.",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Curva cerrada a la der.",
+        img: "img/senales/sp-02.png",
         categoria: 2
 
       },
       {
         id: 3,
-        nombre: "03: Curva pronunciada a la izq.",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Curva pronunciada a la izq.",
+        img: "img/senales/sp-03.png",
         categoria: 2
 
       },
       {
         id: 4,
-        nombre: "04: Curva pronunciada a la der.",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Curva pronunciada a la der.",
+        img: "img/senales/sp-04.png",
         categoria: 2
 
       },
       {
         id: 5,
-        nombre: "05: Curva y contracurva cerrada primera a la izq.",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Curva y contracurva cerrada primera a la izq.",
+        img: "img/senales/sp-05.png",
         categoria: 2
 
       },
       {
         id: 6,
-        nombre: "06: Curva y contracurva cerrada primera a la der.",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Curva y contracurva cerrada primera a la der.",
+        img: "img/senales/sp-06.png",
         categoria: 2
       },
       {
         id: 1,
-        nombre: "01: Ruta nacional",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Ruta nacional",
+        img: "img/senales/si-01.png",
         categoria: 3
       },
       {
         id: 2,
-        nombre: "01A: Ruta departamental",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Ruta departamental",
+        img: "img/senales/si-1a.png",
         categoria: 3
       },
       {
         id: 3,
-        nombre: "02: Ruta panamericana",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Ruta panamericana",
+        img: "img/senales/si-02.png",
         categoria: 3
       },
       {
         id: 4,
-        nombre: "03: Ruta marginal de selva",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Ruta marginal de selva",
+        img: "img/senales/si-03.png",
         categoria: 3
       },
       {
         id: 5,
-        nombre: "04: Sitio de parqueo",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Sitio de parqueo",
+        img: "img/senales/si-04.png",
         categoria: 3
       },
       {
         id: 6,
         nombre: "07A: :Zona especial de parqueo",
-        img: "img/iconSenalReglamentaria.PNG",
+        img: "img/senales/si-01.png",
         categoria: 3
       },
       {
         id: 7,
-        nombre: "08: Paradero de buses",
-        img: "img/iconSenalReglamentaria.PNG",
+        nombre: "Paradero de buses",
+        img: "img/senales/si-02.png",
         categoria: 3
       }
     ]
@@ -182,11 +182,11 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
     {
       $('#contenedorTipoSenal').slideDown(400);
       $scope.categoriaFiltro = id;
-      console.log(id);
+      console.log("Categoria"+$scope.categoriaFiltro);
     };
 
     $scope.seleccionSenal = function(id){
-      console.log(id);
+      console.log("Señal"+id+"");
       $('#contenedorTipoSenal').slideUp(400);
     };
 
