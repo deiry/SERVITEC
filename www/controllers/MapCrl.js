@@ -26,7 +26,7 @@ angular.module('MapCtrl', ['ngCordova'])
         clickableIcons: false
       });
 
-      var posOptions = {timeout: 10000, enableHighAccuracy: false};
+      var posOptions = {timeout: 4000, enableHighAccuracy: false};
       $cordovaGeolocation
         .getCurrentPosition(posOptions)
         .then(function (position) {
@@ -79,7 +79,7 @@ angular.module('MapCtrl', ['ngCordova'])
           }
         });
 
-      },1000);
+      },7000);
 
 
     /*  var latLng = {lat: $scope.lat , lng: $scope.lng };
