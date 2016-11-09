@@ -112,11 +112,23 @@ md-input-container
   margin-left: 10%;
 }
 .item-senal>p{
+  margin-right: 5px;
+  margin-left: 5px;
   text-align: center;
   overflow-wrap: break-word;
+  font-size: 12px;
 }
 .item-senal{
+  background-color: white;
+  margin-right: 1%;
   -webkit-box-shadow: -1px 4px 16px -4px rgba(0,0,0,0.75);
   -moz-box-shadow: -1px 4px 16px -4px rgba(0,0,0,0.75);
   box-shadow: -1px 4px 16px -4px rgba(0,0,0,0.75);
+}
+
+.item-senal:active{
+  background-color: #F1F1F1;
+}
+.row-senal{
+  margin-top: 1% !important;
 }
