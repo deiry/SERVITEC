@@ -30,7 +30,7 @@ var opc2 = [
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService) {
+  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http) {
 
     $scope.categoriaFiltro = '';
 
@@ -313,6 +313,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
     $scope.enviarFormulario = function(){
       console.log("Observacioens "+ $scope.textObservaciones);
       reporteSenalService.setObservaciones($scope.textObservaciones);
+      reporteSenalService.httpReporte($http);
       console.log(reporteSenalService.getReporte());
     }
 
