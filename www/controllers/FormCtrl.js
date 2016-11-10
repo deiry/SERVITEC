@@ -1,36 +1,39 @@
-  var opc = [
-    {
-      id: 1,
-      name: "Bueno"
-    },
-    {
-      id: 2,
-      name: "Regular"
-    },
-    {
-      id: 3,
-      name: "Malo"
-    }
-  ];
-  var opc2 = [
-    {
-      id: 1,
-      name: "No Visible"
-    },
-    {
-      id: 2,
-      name: "Poco visible"
-    },
-    {
-      id: 3,
-      name: "Visible"
-    }
-  ];
+var opc = [
+  {
+    id: 1,
+    name: "Bueno"
+  },
+  {
+    id: 2,
+    name: "Regular"
+  },
+  {
+    id: 3,
+    name: "Malo"
+  }
+];
+var opc2 = [
+  {
+    id: 1,
+    name: "No Visible"
+  },
+  {
+    id: 2,
+    name: "Poco visible"
+  },
+  {
+    id: 3,
+    name: "Visible"
+  }
+];
 
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador) {
+  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService) {
+
+    $scope.categoriaFiltro = '';
+
     $scope.opcMuestra = [
       {
         id: 1,
@@ -38,7 +41,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         opc: opc
       },
       {
-        id:2,
+        id: 2,
         name: "Pedestal",
         opc: opc
       },
@@ -71,7 +74,8 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         icon: "hola"
       }];
 
-    $scope.categoriaFiltro = '';
+
+
     $scope.senalesReglamentaria = [
       {
         id: 1,
@@ -277,21 +281,40 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       }
       $('#contenedorTipoSenal').slideDown(400);
       $scope.categoriaFiltro = id;
-      console.log("Categoria" + $scope.categoriaFiltro);
+      reporteSenalService.setCategoria(id);
+
     };
 
     //Metodo para guardar la señal que selecciono del contenedor
     $scope.seleccionSenal = function (id) {
-      console.log("Señal" + id + "");
+      reporteSenalService.setIdSenal(id);
       $('#contenedorTipoSenal').slideUp(400);
     };
 
     $scope.seleccionFormulario = function (idOpcmuestra, idOpc) {
-      console.log("Opcion muesta: " + idOpcmuestra);
-      console.log("Opcion comboBox: " + idOpc);
+        switch (idOpcmuestra) {
+        case 1:
+          reporteSenalService.setTablero(idOpc);
+          break;
+        case 2:
+          reporteSenalService.setPedestal(idOpc);
+          break;
+        case 3:
+          reporteSenalService.setAnclaje(idOpc);
+          break;
+        case 4:
+          reporteSenalService.setVisibilidad(idOpc);
+          break;
+      }
 
 
     };
+    $scope.textObservaciones = '';
+    $scope.enviarFormulario = function(){
+      console.log("Observacioens "+ $scope.textObservaciones);
+      reporteSenalService.setObservaciones($scope.textObservaciones);
+      console.log(reporteSenalService.getReporte());
+    }
 
   });
 
