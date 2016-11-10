@@ -4,7 +4,7 @@ angular.module('reporteSenalService', [])
     var reporte = {
       idSenal: null,
       categoria: null,
-      foto: '',
+      foto: null,
       latitud: null,
       longitud: null,
       tablero: null,
@@ -98,9 +98,11 @@ angular.module('reporteSenalService', [])
    // ($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto)
     this.httpReporte = function($http)
     {
-      $http.post('http://localhost:8080/servitecserver/index.php/ReportesRest/insertarReporte/'+reporte.idSenal+'/'+
-      reporte.latitud+'/'+reporte.longitud+'/'+reporte.tablero+'/'+reporte.pedestal+'/'+reporte.anclaje+'/'+
-        reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones)
+      var strReporte = reporte.idSenal+'/'+
+        reporte.latitud+'/'+reporte.longitud+'/'+reporte.tablero+'/'+reporte.pedestal+'/'+reporte.anclaje+'/'+
+        reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones;
+      console.log(strReporte)
+      $http.post('http://localhost:8080/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
         .success(function(data,status,headers,config){
           console.log(data);
         })
