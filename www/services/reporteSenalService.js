@@ -1,6 +1,8 @@
 angular.module('reporteSenalService', [])
   .service('reporteSenalService',[function ($http)
   {
+    var reportes = [];
+    var index=0;
     var reporte = {
       idSenal: null,
       categoria: null,
@@ -34,7 +36,6 @@ angular.module('reporteSenalService', [])
     };
 
     this.setTablero = function(tab){
-      console.log("asigna valor tablero");
       reporte.tablero = tab;
     };
     this.getTablero = function(){
@@ -98,10 +99,11 @@ angular.module('reporteSenalService', [])
    // ($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto)
     this.httpReporte = function($http)
     {
+
       var strReporte = reporte.idSenal+'/'+
         reporte.latitud+'/'+reporte.longitud+'/'+reporte.tablero+'/'+reporte.pedestal+'/'+reporte.anclaje+'/'+
         reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones;
-      console.log(strReporte)
+
       $http.post('http://localhost:8080/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
         .success(function(data,status,headers,config){
           console.log(data);
@@ -111,7 +113,10 @@ angular.module('reporteSenalService', [])
         });
     }
 
-
+    this.agregarReporte= function(){
+      reportes.push(reporte);
+      console.log(reportes)
+    }
 
   }
   ]);

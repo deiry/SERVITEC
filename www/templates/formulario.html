@@ -15,13 +15,18 @@
 
       <div class="z-position-1" style="width: 100%; height: 60%;bottom: 0">
         <div class="row">
-          <div class="col">
+          <div class="col col-60">
             <md-input-container>
-              <label>Selecciona la categoria</label>
+              <label>Categoria</label>
               <md-select name="opci" ng-model="x" required="">
                 <md-option value={{j}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id)">{{j.name}}</md-option>
               </md-select>
             </md-input-container>
+          </div>
+          <div class="col col-40">
+            <img ng-src="{{iconSenal}}" style="width: 50%;">
+            <br>
+         <label>{{nameSenal}}</label>
           </div>
         </div>
         <div class="row">
@@ -77,15 +82,15 @@
      <div id="contenedorTipoSenal" class="z-position-2"
            style="">
         <div ng-repeat="senal in senales" ng-if="$index % 3 == 0" class="row row-senal">
-          <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index].id)">
+          <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index].id,senales[$index].img,senales[$index].nombre)">
             <img ng-src="{{senales[$index].img}}">
             <p>{{senales[$index].nombre}}</p>
           </div>
-          <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 1].id)">
+          <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 1].id,senales[$index+1].img,senales[$index+1].nombre)">
             <img ng-src="{{senales[$index + 1].img}}">
             <p>{{senales[$index + 1].nombre}}</p>
           </div>
-          <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 2].id)">
+          <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 2].id,senales[$index+2].img,senales[$index+2].nombre)">
             <img ng-src="{{senales[$index + 2].img}}">
             <p>{{senales[$index + 2].nombre}}</p>
           </div>
