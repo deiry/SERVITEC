@@ -34,7 +34,6 @@ angular.module('reporteSenalService', [])
     };
 
     this.setTablero = function(tab){
-      console.log("asigna valor tablero");
       reporte.tablero = tab;
     };
     this.getTablero = function(){

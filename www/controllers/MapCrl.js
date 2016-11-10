@@ -1,6 +1,6 @@
 angular.module('MapCtrl', ['ngCordova'])
 
-  .controller('MapCtrl', function($scope,$cordovaGeolocation, LatLngMarcador, $timeout){
+  .controller('MapCtrl', function($scope,$cordovaGeolocation, LatLngMarcador, reporteSenalService, $timeout){
     $scope.lat = 6.2518;
     $scope.lng = -75.5636;
     var map;
@@ -47,8 +47,8 @@ angular.module('MapCtrl', ['ngCordova'])
 
         $scope.lat = latLng.lat();
         $scope.lng = latLng.lng();
-
-        console.log({lat: $scope.lat,lng: $scope.lng});
+        reporteSenalService.setLat($scope.lat);
+        reporteSenalService.setLng($scope.lng);
 
         var circle = new google.maps.Circle({
           strokeColor: '##063971',
@@ -76,6 +76,11 @@ angular.module('MapCtrl', ['ngCordova'])
           var lng = this.getPosition().lng();
           if(kilometros(lat,lng,$scope.lat,$scope.lng) > 100){
             markerPosicion.setPosition(latLng);
+          }
+          else {
+            console.log("Lat: "+ lat+" Lon: "+ lng);
+            reporteSenalService.setLat(lat);
+            reporteSenalService.setLng(lng);
           }
         });
 
