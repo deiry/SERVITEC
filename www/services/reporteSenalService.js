@@ -101,7 +101,5 @@ angular.module('reporteSenalService', [])
       $http.post('url')
     }
 
-
-
   }
   ]);
