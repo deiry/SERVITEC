@@ -96,9 +96,15 @@ angular.module('reporteSenalService', [])
       return reporte.observaciones;
     };
 
-    this.httpReporte = function()
+    this.httpReporte = function($http)
     {
-      $http.post('url')
+      $http.post('http://localhost:8000/servitecserver/index.php/ReportesRest/insertarReporte',reporte)
+        .success(function(data,status,headers,config){
+          console.log(data);
+        })
+        .error(function(error,status,headers,config){
+          console.log(error);
+        });
     }
 
 
