@@ -78,7 +78,6 @@ angular.module('MapCtrl', ['ngCordova'])
             markerPosicion.setPosition(latLng);
           }
           else {
-            console.log("Lat: "+ lat+" Lon: "+ lng);
             reporteSenalService.setLat(lat);
             reporteSenalService.setLng(lng);
           }
