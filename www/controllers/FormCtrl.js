@@ -1,12 +1,61 @@
-var opc = ["Bueno", "Regular", "Malo"];
-var opc2 = ["No Visible", "Poco visible", "Visible"];
+var opc = [
+  {
+    id: 1,
+    name: "Bueno"
+  },
+  {
+    id: 2,
+    name: "Regular"
+  },
+  {
+    id: 3,
+    name: "Malo"
+  }
+];
+var opc2 = [
+  {
+    id: 1,
+    name: "No Visible"
+  },
+  {
+    id: 2,
+    name: "Poco visible"
+  },
+  {
+    id: 3,
+    name: "Visible"
+  }
+];
+
+
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador) {
+  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http) {
+
+    $scope.categoriaFiltro = '';
+
     $scope.opcMuestra = [
-      {name: "Tablero", opc: opc, name1: "Pedestal", opc1: opc},
-      {name: "Anclaje", opc: opc, name1: "Visibilidad", opc1: opc2},
-      {name: "Acción a tomar", opc: opc}
+      {
+        id: 1,
+        name: "Tablero",
+        opc: opc
+      },
+      {
+        id: 2,
+        name: "Pedestal",
+        opc: opc
+      },
+      {
+        id: 3,
+        name: "Anclaje",
+        opc: opc
+      },
+      {
+        id: 4,
+        name: "Visibilidad",
+        opc: opc2
+      }
+
     ];
     $scope.categoriaSenales = [
       {
@@ -25,9 +74,9 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         icon: "hola"
       }];
 
-    $scope.categoriaFiltro = '';
 
-    $scope.senales = [
+
+    $scope.senalesReglamentaria = [
       {
         id: 1,
         nombre: "Pare",
@@ -64,6 +113,45 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         img: "img/senales/sr-06.png",
         categoria: 1
       },
+      {
+        id: 1,
+        nombre: "Pare",
+        img: "img/senales/sr-01.png",
+        categoria: 1
+      },
+      {
+        id: 2,
+        nombre: "Ceda el paso",
+        img: "img/senales/sr-02.png",
+        categoria: 1
+      },
+      {
+        id: 3,
+        nombre: "Siga de frente",
+        img: "img/senales/sr-03.png",
+        categoria: 1
+      },
+      {
+        id: 4,
+        nombre: "No pase",
+        img: "img/senales/sr-04.png",
+        categoria: 1
+      },
+      {
+        id: 5,
+        nombre: "05: Giro a la izq. solamente",
+        img: "img/senales/sr-05.png",
+        categoria: 1
+      },
+      {
+        id: 6,
+        nombre: "Prohibido girar a la izq.",
+        img: "img/senales/sr-06.png",
+        categoria: 1
+      }
+    ]
+
+    $scope.senalesPreventiva = [
       {
         id: 1,
         nombre: "Curva cerrada a la izq.",
@@ -103,7 +191,9 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         nombre: "Curva y contracurva cerrada primera a la der.",
         img: "img/senales/sp-06.png",
         categoria: 2
-      },
+      }
+    ]
+    $scope.senalesInformativa = [
       {
         id: 1,
         nombre: "Ruta nacional",
@@ -173,22 +263,59 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         alert(err);
       });
     };
+    $scope.senales = [];
     /**
      * despliega la vista para seleccionar la señal de transito
      * @param id  tiene el id de la categoria de la señal
      * 1: si es reglamentaria, 2: si es preventiva, 3: si es informativa
-       */
-    $scope.seleccionCategoria = function(id)
-    {
+     */
+    $scope.seleccionCategoria = function (id) {
+      if (id == 1) {
+        $scope.senales = $scope.senalesReglamentaria;
+      }
+      if (id == 2) {
+        $scope.senales = $scope.senalesPreventiva;
+      }
+      if (id == 3) {
+        $scope.senales = $scope.senalesInformativa;
+      }
       $('#contenedorTipoSenal').slideDown(400);
       $scope.categoriaFiltro = id;
-      console.log("Categoria"+$scope.categoriaFiltro);
+      reporteSenalService.setCategoria(id);
+
     };
 
-    $scope.seleccionSenal = function(id){
-      console.log("Señal"+id+"");
+    //Metodo para guardar la señal que selecciono del contenedor
+    $scope.seleccionSenal = function (id) {
+      reporteSenalService.setIdSenal(id);
       $('#contenedorTipoSenal').slideUp(400);
     };
+
+    $scope.seleccionFormulario = function (idOpcmuestra, idOpc) {
+        switch (idOpcmuestra) {
+        case 1:
+          reporteSenalService.setTablero(idOpc);
+          break;
+        case 2:
+          reporteSenalService.setPedestal(idOpc);
+          break;
+        case 3:
+          reporteSenalService.setAnclaje(idOpc);
+          break;
+        case 4:
+          reporteSenalService.setVisibilidad(idOpc);
+          break;
+      }
+
+
+    };
+    $scope.textObservaciones = '';
+    $scope.enviarFormulario = function(){
+      console.log("Observacioens "+ $scope.textObservaciones);
+      reporteSenalService.setObservaciones($scope.textObservaciones);
+      reporteSenalService.httpReporte($http);
+      console.log(reporteSenalService.getReporte());
+    }
 
   });
 
