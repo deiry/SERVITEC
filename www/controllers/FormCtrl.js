@@ -396,9 +396,10 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
 
     };
-    $scope.textObservaciones = '';
+    $scope.textObservaciones = null;
     $scope.enviarFormulario = function(){
-      reporteSenalService.setFoto($scope.imgURI);
+      console.log($scope.imgURI);
+      //reporteSenalService.setFoto($scope.imgURI);
       reporteSenalService.setObservaciones($scope.textObservaciones);
       reporteSenalService.httpReporte($http);
       reporteSenalService.agregarReporte();
