@@ -191,9 +191,91 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         nombre: "Curva y contracurva cerrada primera a la der.",
         img: "img/senales/sp-06.png",
         categoria: 2
+      },
+      {
+        id: 1,
+        nombre: "Curva cerrada a la izq.",
+        img: "img/senales/sp-01.png",
+        categoria: 2
+      },
+      {
+        id: 2,
+        nombre: "Curva cerrada a la der.",
+        img: "img/senales/sp-02.png",
+        categoria: 2
+
+      },
+      {
+        id: 3,
+        nombre: "Curva pronunciada a la izq.",
+        img: "img/senales/sp-03.png",
+        categoria: 2
+
+      },
+      {
+        id: 4,
+        nombre: "Curva pronunciada a la der.",
+        img: "img/senales/sp-04.png",
+        categoria: 2
+
+      },
+      {
+        id: 5,
+        nombre: "Curva y contracurva cerrada primera a la izq.",
+        img: "img/senales/sp-05.png",
+        categoria: 2
+
+      },
+      {
+        id: 6,
+        nombre: "Curva y contracurva cerrada primera a la der.",
+        img: "img/senales/sp-06.png",
+        categoria: 2
       }
     ]
     $scope.senalesInformativa = [
+      {
+        id: 1,
+        nombre: "Ruta nacional",
+        img: "img/senales/si-01.png",
+        categoria: 3
+      },
+      {
+        id: 2,
+        nombre: "Ruta departamental",
+        img: "img/senales/si-1a.png",
+        categoria: 3
+      },
+      {
+        id: 3,
+        nombre: "Ruta panamericana",
+        img: "img/senales/si-02.png",
+        categoria: 3
+      },
+      {
+        id: 4,
+        nombre: "Ruta marginal de selva",
+        img: "img/senales/si-03.png",
+        categoria: 3
+      },
+      {
+        id: 5,
+        nombre: "Sitio de parqueo",
+        img: "img/senales/si-04.png",
+        categoria: 3
+      },
+      {
+        id: 6,
+        nombre: "07A: :Zona especial de parqueo",
+        img: "img/senales/si-01.png",
+        categoria: 3
+      },
+      {
+        id: 7,
+        nombre: "Paradero de buses",
+        img: "img/senales/si-02.png",
+        categoria: 3
+      },
       {
         id: 1,
         nombre: "Ruta nacional",
@@ -284,10 +366,15 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       reporteSenalService.setCategoria(id);
 
     };
-
+  $scope.iconSenal="";
+    $scope.nameSenal="";
     //Metodo para guardar la señal que selecciono del contenedor
-    $scope.seleccionSenal = function (id) {
+    $scope.seleccionSenal = function (id,icon,name) {
       reporteSenalService.setIdSenal(id);
+      $scope.iconSenal=icon;
+      $scope.nameSenal=name;
+
+
       $('#contenedorTipoSenal').slideUp(400);
     };
 
@@ -309,12 +396,14 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
 
     };
-    $scope.textObservaciones = '';
+    $scope.textObservaciones = null;
     $scope.enviarFormulario = function(){
-      console.log("Observacioens "+ $scope.textObservaciones);
+      console.log($scope.imgURI);
+      //reporteSenalService.setFoto($scope.imgURI);
       reporteSenalService.setObservaciones($scope.textObservaciones);
       reporteSenalService.httpReporte($http);
-      console.log(reporteSenalService.getReporte());
+      reporteSenalService.agregarReporte();
+
     }
 
   });
