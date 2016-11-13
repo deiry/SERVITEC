@@ -27,6 +27,25 @@ var opc2 = [
   }
 ];
 
+var opc3 = [
+  {
+    id: 1,
+    name:"Retiro",
+  },
+  {
+    id:2,
+    name: "Reemplazo"
+  },
+  {
+    id: 3,
+    name: "Mantenimiento"
+  },
+  {
+    id:4,
+    name: "Inventario"
+  }
+]
+
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
@@ -54,6 +73,11 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         id: 4,
         name: "Visibilidad",
         opc: opc2
+      },
+      {
+        id: 5,
+        name: "Acción a tomar",
+        opc: opc3
       }
 
     ];
@@ -351,7 +375,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
      * @param id  tiene el id de la categoria de la señal
      * 1: si es reglamentaria, 2: si es preventiva, 3: si es informativa
      */
-    $scope.seleccionCategoria = function (id) {
+    $scope.seleccionCategoria = function (id,name) {
       if (id == 1) {
         $scope.senales = $scope.senalesReglamentaria;
       }
@@ -363,7 +387,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       }
       $('#contenedorTipoSenal').slideDown(400);
       $scope.categoriaFiltro = id;
-      reporteSenalService.setCategoria(id);
+      reporteSenalService.setCategoria(name);
 
     };
   $scope.iconSenal="";
@@ -373,24 +397,25 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       reporteSenalService.setIdSenal(id);
       $scope.iconSenal=icon;
       $scope.nameSenal=name;
-
-
       $('#contenedorTipoSenal').slideUp(400);
     };
 
-    $scope.seleccionFormulario = function (idOpcmuestra, idOpc) {
+    $scope.seleccionFormulario = function (idOpcmuestra,nameOpc) {
         switch (idOpcmuestra) {
         case 1:
-          reporteSenalService.setTablero(idOpc);
+          reporteSenalService.setTablero(nameOpc);
           break;
         case 2:
-          reporteSenalService.setPedestal(idOpc);
+          reporteSenalService.setPedestal(nameOpc);
           break;
         case 3:
-          reporteSenalService.setAnclaje(idOpc);
+          reporteSenalService.setAnclaje(nameOpc);
           break;
         case 4:
-          reporteSenalService.setVisibilidad(idOpc);
+          reporteSenalService.setVisibilidad(nameOpc);
+          break;
+        case 5:
+          reporteSenalService.setAccionTomar((nameOpc));
           break;
       }
 

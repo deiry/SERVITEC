@@ -13,6 +13,7 @@ angular.module('reporteSenalService', [])
       pedestal: null,
       anclaje: null,
       visibilidad: null,
+      accionTomar: null,
       observaciones: null
     };
 
@@ -96,14 +97,23 @@ angular.module('reporteSenalService', [])
     this.getObservaciones = function(){
       return reporte.observaciones;
     };
+
+    this.setAccionTomar = function(acc){
+      reporte.accionTomar = acc;
+    };
+    this.getAccionTomar = function(){
+      return reporte.accionTomar;
+    };
+
+
    // ($idSenal,$lat,$lng,$idTablero,$idPedestal,$idAnclaje,$idVisibolidad,$foto)
     this.httpReporte = function($http)
     {
 
       var strReporte = reporte.idSenal+'/'+reporte.latitud+'/'+reporte.longitud+'/'+reporte.tablero+'/'+reporte.pedestal+'/'+reporte.anclaje+'/'+
-        reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones;
+        reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones+'/'+reporte.accionTomar+'/'+reporte.categoria;
 
-      $http.post('http://192.168.1.100:8080/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
+      $http.post('http://192.168.1.55:8080/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
         .success(function(data,status,headers,config){
           console.log(data);
         })

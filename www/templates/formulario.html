@@ -19,7 +19,7 @@
             <md-input-container>
               <label>Categoria</label>
               <md-select name="opci" ng-model="x" required="">
-                <md-option value={{j}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id)">{{j.name}}</md-option>
+                <md-option value={{j}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id, j.name)">{{j.name}}</md-option>
               </md-select>
             </md-input-container>
           </div>
@@ -38,7 +38,7 @@
                     <label>{{i.name}}</label>
                     <md-select name="opci" ng-model="x" required="">
                       <md-option ng-repeat="x in i.opc" value={{x.name}}
-                                 ng-click="seleccionFormulario(i.id,x.id)">{{x.name}}</md-option>
+                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}</md-option>
                     </md-select>
                   </md-input-container>
 
@@ -54,7 +54,7 @@
                     <label>{{i.name}}</label>
                     <md-select name="opci" ng-model="x" required="">
                       <md-option ng-repeat="x in i.opc" value={{x.name}}
-                                 ng-click="seleccionFormulario(i.id,x.id)">{{x.name}}</md-option>
+                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}</md-option>
                     </md-select>
                   </md-input-container>
                 </form>
