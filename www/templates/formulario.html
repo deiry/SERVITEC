@@ -83,15 +83,15 @@
            style="">
         <div ng-repeat="senal in senales" ng-if="$index % 3 == 0" class="row row-senal">
           <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index].id,senales[$index].img,senales[$index].nombre)">
-            <img ng-src="{{senales[$index].img}}">
+            <img ng-src="{{urlImg + senales[$index].img}}">
             <p>{{senales[$index].nombre}}</p>
           </div>
           <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 1].id,senales[$index+1].img,senales[$index+1].nombre)">
-            <img ng-src="{{senales[$index + 1].img}}">
+            <img ng-src="{{urlImg + senales[$index + 1].img}}">
             <p>{{senales[$index + 1].nombre}}</p>
           </div>
           <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 2].id,senales[$index+2].img,senales[$index+2].nombre)">
-            <img ng-src="{{senales[$index + 2].img}}">
+            <img ng-src="{{urlImg + senales[$index + 2].img}}">
             <p>{{senales[$index + 2].nombre}}</p>
           </div>
 

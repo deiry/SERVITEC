@@ -98,3 +98,4 @@ angular.module('servitec', ['ionic', 'starter.controllers',
   }
 }
   ])
+
