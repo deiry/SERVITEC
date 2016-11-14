@@ -52,7 +52,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
   .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http) {
 
     $scope.categoriaFiltro = '';
-
+    var fecha;
     $scope.opcMuestra = [
       {
         id: 1,
@@ -127,7 +127,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       },
       {
         id: 5,
-        nombre: "05: Giro a la izq. solamente",
+        nombre: "Giro a la izq. solamente",
         img: "img/senales/sr-05.png",
         categoria: 1
       },
@@ -138,37 +138,37 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         categoria: 1
       },
       {
-        id: 1,
+        id: 7,
         nombre: "Pare",
         img: "img/senales/sr-01.png",
         categoria: 1
       },
       {
-        id: 2,
+        id: 8,
         nombre: "Ceda el paso",
         img: "img/senales/sr-02.png",
         categoria: 1
       },
       {
-        id: 3,
+        id: 9,
         nombre: "Siga de frente",
         img: "img/senales/sr-03.png",
         categoria: 1
       },
       {
-        id: 4,
+        id: 10,
         nombre: "No pase",
         img: "img/senales/sr-04.png",
         categoria: 1
       },
       {
-        id: 5,
+        id: 11,
         nombre: "05: Giro a la izq. solamente",
         img: "img/senales/sr-05.png",
         categoria: 1
       },
       {
-        id: 6,
+        id: 12,
         nombre: "Prohibido girar a la izq.",
         img: "img/senales/sr-06.png",
         categoria: 1
@@ -177,81 +177,81 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
     $scope.senalesPreventiva = [
       {
-        id: 1,
+        id: 13,
         nombre: "Curva cerrada a la izq.",
         img: "img/senales/sp-01.png",
         categoria: 2
       },
       {
-        id: 2,
+        id: 14,
         nombre: "Curva cerrada a la der.",
         img: "img/senales/sp-02.png",
         categoria: 2
 
       },
       {
-        id: 3,
+        id: 15,
         nombre: "Curva pronunciada a la izq.",
         img: "img/senales/sp-03.png",
         categoria: 2
 
       },
       {
-        id: 4,
+        id: 16,
         nombre: "Curva pronunciada a la der.",
         img: "img/senales/sp-04.png",
         categoria: 2
 
       },
       {
-        id: 5,
+        id: 17,
         nombre: "Curva y contracurva cerrada primera a la izq.",
         img: "img/senales/sp-05.png",
         categoria: 2
 
       },
       {
-        id: 6,
+        id: 18,
         nombre: "Curva y contracurva cerrada primera a la der.",
         img: "img/senales/sp-06.png",
         categoria: 2
       },
       {
-        id: 1,
+        id: 19,
         nombre: "Curva cerrada a la izq.",
         img: "img/senales/sp-01.png",
         categoria: 2
       },
       {
-        id: 2,
+        id: 20,
         nombre: "Curva cerrada a la der.",
         img: "img/senales/sp-02.png",
         categoria: 2
 
       },
       {
-        id: 3,
+        id: 21,
         nombre: "Curva pronunciada a la izq.",
         img: "img/senales/sp-03.png",
         categoria: 2
 
       },
       {
-        id: 4,
+        id: 22,
         nombre: "Curva pronunciada a la der.",
         img: "img/senales/sp-04.png",
         categoria: 2
 
       },
       {
-        id: 5,
+        id: 23,
         nombre: "Curva y contracurva cerrada primera a la izq.",
         img: "img/senales/sp-05.png",
         categoria: 2
 
       },
       {
-        id: 6,
+        id: 24,
         nombre: "Curva y contracurva cerrada primera a la der.",
         img: "img/senales/sp-06.png",
         categoria: 2
@@ -259,85 +259,85 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
     ]
     $scope.senalesInformativa = [
       {
-        id: 1,
+        id: 25,
         nombre: "Ruta nacional",
         img: "img/senales/si-01.png",
         categoria: 3
       },
       {
-        id: 2,
+        id: 26,
         nombre: "Ruta departamental",
         img: "img/senales/si-1a.png",
         categoria: 3
       },
       {
-        id: 3,
+        id: 27,
         nombre: "Ruta panamericana",
         img: "img/senales/si-02.png",
         categoria: 3
       },
       {
-        id: 4,
+        id: 28,
         nombre: "Ruta marginal de selva",
         img: "img/senales/si-03.png",
         categoria: 3
       },
       {
-        id: 5,
+        id: 29,
         nombre: "Sitio de parqueo",
         img: "img/senales/si-04.png",
         categoria: 3
       },
       {
-        id: 6,
+        id: 30,
         nombre: "07A: :Zona especial de parqueo",
         img: "img/senales/si-01.png",
         categoria: 3
       },
       {
-        id: 7,
+        id: 31,
         nombre: "Paradero de buses",
         img: "img/senales/si-02.png",
         categoria: 3
       },
       {
-        id: 1,
+        id: 32,
         nombre: "Ruta nacional",
         img: "img/senales/si-01.png",
         categoria: 3
       },
       {
-        id: 2,
+        id: 33,
         nombre: "Ruta departamental",
         img: "img/senales/si-1a.png",
         categoria: 3
       },
       {
-        id: 3,
+        id: 34,
         nombre: "Ruta panamericana",
         img: "img/senales/si-02.png",
         categoria: 3
       },
       {
-        id: 4,
+        id: 35,
         nombre: "Ruta marginal de selva",
         img: "img/senales/si-03.png",
         categoria: 3
       },
       {
-        id: 5,
+        id: 36,
         nombre: "Sitio de parqueo",
         img: "img/senales/si-04.png",
         categoria: 3
       },
       {
-        id: 6,
+        id: 37,
         nombre: "07A: :Zona especial de parqueo",
         img: "img/senales/si-01.png",
         categoria: 3
       },
       {
-        id: 7,
+        id: 38,
         nombre: "Paradero de buses",
         img: "img/senales/si-02.png",
         categoria: 3
@@ -387,7 +387,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       }
       $('#contenedorTipoSenal').slideDown(400);
       $scope.categoriaFiltro = id;
-      reporteSenalService.setCategoria(name);
+      reporteSenalService.setCategoria(id);
 
     };
   $scope.iconSenal="";
@@ -425,10 +425,24 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
     $scope.enviarFormulario = function(){
       console.log($scope.imgURI);
       //reporteSenalService.setFoto($scope.imgURI);
+      this.asignarFecha();
       reporteSenalService.setObservaciones($scope.textObservaciones);
       reporteSenalService.httpReporte($http);
       reporteSenalService.agregarReporte();
 
+    }
+
+    $scope.asignarFecha = function(){
+
+      fecha = new Date();
+      var dia = fecha.getDate();
+      var mes = fecha.getMonth();
+      var año = fecha.getFullYear();
+      var hora = fecha.getHours() + ':'+fecha.getMinutes()+':'+fecha.getSeconds();
+
+      var fecha = año + '-'+ mes+'-'+dia+' '+hora;
+
+      reporteSenalService.setFecha(fecha);
     }
 
   });
