@@ -1,0 +1,50 @@
+('10', 'Prohibido girar en "U"', 'sr-10.png', '1', 'SR-10')
+('11', 'Doble via', 'sr-11.png', '1', 'SR-11')
+('12', 'Tres carriles uno en contraflujo', 'sr-12.png', '1', 'SR-12'),
+('13', 'Tres carriles dos en contraflujo', 'sr-13.png', '1', 'SR-13'),
+('14', 'Prohibido el cambio de calzada izquierda derecha', 'sr-14.png', '1', 'SR-14');
+
+('32', 'Velocidad minima permitida', 'sr-30a.png', '1', 'SR-30a'),
+('33', 'Velocidad maxima permitida salida', 'sr-30b.png', '1', 'SR-30B'),
+('34', 'Peso maximo total permitido', 'sr-31.png', '1', 'SR-31'),
+('35', 'Altura maxima permitida', 'sr-32.png', '1', 'SR-32'),
+('36', 'Ancho maximo permitido', 'sr-33.png', '1', 'SR-33'),
+('37', 'Zona de estacionamiento de taxi', 'sr-34.png', '1', 'SR-34'),
+('38', 'Circulacion con luces bajas', 'sr-35.png', '1', 'SR-35'),
+('39', 'Reten', 'sr-36.png', '1', 'SR-36'),
+('40', 'Sentido unico de circulacion', 'sr-38.png', '1', 'SR-38'),
+('41', 'Sentido de circulacion doble', 'sr-39.png', '1', 'SR-39'),
+('42', 'Paradero', 'sr-40.png', '1', 'SR-40'),
+('43', 'Prohibido dejar o recoger pasajeros', 'sr-41.png', '1', 'SR-41'),
+('44', 'Zona de cargue y descargue', 'sr-42.png', '1', 'SR-42'),
+('45', 'Prohibido el cargue y descargue', 'sr-43.png', '1', 'SR-43'),
+('46', 'Conservar espaciamiento', 'sr-44.png', '1', 'SR-44'),
+('47', 'Indicacion de separador de transito a la izquierda', 'sr-45.png', '1', 'SR-45'),
+('48', 'Indicacion de separador de transito a la derecha', 'sr-46.png', '1', 'SR-46'),
+('49', 'No bloquear cruce', 'sr-47.png', '1', 'SR-47'),
+('50', 'Fin prohibicion de adelantamiento', 'sr-48.png', '1', 'SR-48'),
+('51', 'Preferencia al sentido contrario', 'sr-49.png', '1', 'SR-49'),
+('52', 'Prohibido girar a la derecha con luz roja', 'sr-50.png', '1', 'SR-50'),
+('53', 'Circulacion prohibida de carros de mano', 'sr-51.png', '1', 'SR-51'),
+('54', 'Circulacion prohibida de buses', 'sr-52.png', '1', 'SR-52'),
+('55', 'Circulacion prohibida de motocarros', 'sr-53.png', '1', 'SR-53'),
+('56', 'Circulacion prohibida de cuatrimotos', 'sr-54.png', '1', 'SR-54');
+
+Señales preventivas
+('57', 'Curva cerrada a la izquierda', 'sp-01.png', '2', 'SP-01'),
+('58', 'Curva cerrada a la derecha', 'sp-02.png', '2', 'SP-02'),
+('59', 'Curva pronunciada a la izquierda', 'sp-03.png', '2', 'SP-03'),
+('60', 'Curva pronunciada a la derecha', 'sp-04.png', '2', 'SP-04'),
+('61', 'Curva y contracurva cerrada la primera izquierda', 'sp-05.png', '2', 'SP-05'),
+('62', 'Curva y contracurva cerrada a la primera derecha', 'sp-06.png', '2', 'SP-06'),
+('63', 'Zona de curvas sucesivas la primera a la izquierda', 'sp-07.png', '2', 'SP-07'),
+('64', 'Zona de curvas sucesivas la primera a la derecha', 'sp-08.png', '2', 'SP-08'),
+('65', 'Curva y contracurva pronunciada primera a la izquierda', 'sp-09.png', '2', 'SP-09'),
+('66', 'Curva y contracurva pronunciada primera a la derecha', 'sp-10.png', '2', 'SP-10'),
+('67', 'Interseccion de vias', 'sp-11.png', '2', 'SP-11'),
+('68', 'Via lateral izquierda', 'sp-12.png', '2', 'SP-12');
+
+INSERT INTO `tbl_senal` (`id_senal`, `nombre`, `icono`, `id_categoria`, `codigo`) 
+VALUES
+('69', 'Via lateral izquierda', 'sp-12.png', '2', 'SP-12');
+

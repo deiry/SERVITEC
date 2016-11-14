@@ -6,7 +6,7 @@
       <div class="z-position-1" style="width: 100%; height: 40%; background-color: #3e4f56">
         <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="width: auto; height: 100%;margin-left: 25%;">
 
-        <div style="position: absolute; bottom: 60%;right: 0;">
+        <div style="position: absolute; bottom: 3%;right: 0;">
           <md-button aria-label="menu" class="md-fab md-primary colorApp" ng-click="tomarFoto()">
             <ng-md-icon icon="add_a_photo"></ng-md-icon>
           </md-button>
@@ -19,7 +19,7 @@
             <md-input-container>
               <label>Categoria</label>
               <md-select name="opci" ng-model="x" required="">
-                <md-option value={{j}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id)">{{j.name}}</md-option>
+                <md-option value={{j}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id, j.name)">{{j.name}}</md-option>
               </md-select>
             </md-input-container>
           </div>
@@ -38,7 +38,7 @@
                     <label>{{i.name}}</label>
                     <md-select name="opci" ng-model="x" required="">
                       <md-option ng-repeat="x in i.opc" value={{x.name}}
-                                 ng-click="seleccionFormulario(i.id,x.id)">{{x.name}}</md-option>
+                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}</md-option>
                     </md-select>
                   </md-input-container>
 
@@ -54,7 +54,7 @@
                     <label>{{i.name}}</label>
                     <md-select name="opci" ng-model="x" required="">
                       <md-option ng-repeat="x in i.opc" value={{x.name}}
-                                 ng-click="seleccionFormulario(i.id,x.id)">{{x.name}}</md-option>
+                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}</md-option>
                     </md-select>
                   </md-input-container>
                 </form>
@@ -69,7 +69,7 @@
           <textarea ng-model="$parent.textObservaciones"></textarea>
         </md-input-container>
         <a href="#/app/map" ng-click="enviarFormulario()">
-          <div style="position: absolute; bottom: 3%;right: 0;">
+          <div style="position: fixed; bottom: 3%;right: 0;">
             <md-button aria-label="menu" class="md-fab md-primary colorApp">
               <ng-md-icon icon="done"></ng-md-icon>
             </md-button>
