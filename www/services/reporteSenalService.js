@@ -122,6 +122,7 @@ angular.module('reporteSenalService', [])
       var strReporte = reporte.idSenal+'/'+reporte.latitud+'/'+reporte.longitud+'/'+reporte.tablero+'/'+reporte.pedestal+'/'+reporte.anclaje+'/'+
         reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones+'/'+reporte.accionTomar+'/'+reporte.categoria+'/'+reporte.fecha;
 
+      console.log(strReporte);
       $http.post('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
         .success(function(data,status,headers,config){
           console.log(data);
@@ -131,20 +132,6 @@ angular.module('reporteSenalService', [])
         });
     };
 
-    this.getSenalesHttp = function(id,$http){
-      this.señales = null;
-      $http.post('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerSenales/'+id)
-        .success(function(data){
-          this.senales = data;
-          console.log(this.senales);
-        })
-        .error(function(error){
-          alert('error servitec: '+error);
-        });
-      //console.log($scope.senalesReglamentaria);
-      console.log(this.senales);
-      return this.senales;
-    };
     this.agregarReporte= function(){
       reportes.push(reporte);
       console.log(reportes)
