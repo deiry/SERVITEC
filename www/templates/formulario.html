@@ -6,7 +6,7 @@
       <div class="z-position-1" style="width: 100%; height: 40%; background-color: #3e4f56">
         <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="width: auto; height: 100%;margin-left: 25%;">
 
-        <div style="position: absolute; bottom: 60%;right: 0;">
+        <div style="position: absolute; bottom: 3%;right: 0;">
           <md-button aria-label="menu" class="md-fab md-primary colorApp" ng-click="tomarFoto()">
             <ng-md-icon icon="add_a_photo"></ng-md-icon>
           </md-button>
@@ -69,7 +69,7 @@
           <textarea ng-model="$parent.textObservaciones"></textarea>
         </md-input-container>
         <a href="#/app/map" ng-click="enviarFormulario()">
-          <div style="position: absolute; bottom: 3%;right: 0;">
+          <div style="position: fixed; bottom: 3%;right: 0;">
             <md-button aria-label="menu" class="md-fab md-primary colorApp">
               <ng-md-icon icon="done"></ng-md-icon>
             </md-button>
@@ -83,15 +83,15 @@
            style="">
         <div ng-repeat="senal in senales" ng-if="$index % 3 == 0" class="row row-senal">
           <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index].id,senales[$index].img,senales[$index].nombre)">
-            <img ng-src="{{senales[$index].img}}">
+            <img ng-src="{{urlImg + senales[$index].img}}">
             <p>{{senales[$index].nombre}}</p>
           </div>
           <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 1].id,senales[$index+1].img,senales[$index+1].nombre)">
-            <img ng-src="{{senales[$index + 1].img}}">
+            <img ng-src="{{urlImg + senales[$index + 1].img}}">
             <p>{{senales[$index + 1].nombre}}</p>
           </div>
           <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 2].id,senales[$index+2].img,senales[$index+2].nombre)">
-            <img ng-src="{{senales[$index + 2].img}}">
+            <img ng-src="{{urlImg + senales[$index + 2].img}}">
             <p>{{senales[$index + 2].nombre}}</p>
           </div>
 

@@ -50,300 +50,20 @@ var opc3 = [
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
   .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http) {
-
+    $scope.urlImg = 'img/senales/';
+    $scope.iconSenal="";
+    $scope.nameSenal="";
     $scope.categoriaFiltro = '';
+
     var fecha;
-    $scope.opcMuestra = [
-      {
-        id: 1,
-        name: "Tablero",
-        opc: opc
-      },
-      {
-        id: 2,
-        name: "Pedestal",
-        opc: opc
-      },
-      {
-        id: 3,
-        name: "Anclaje",
-        opc: opc
-      },
-      {
-        id: 4,
-        name: "Visibilidad",
-        opc: opc2
-      },
-      {
-        id: 5,
-        name: "Acción a tomar",
-        opc: opc3
-      }
-
-    ];
-    $scope.categoriaSenales = [
-      {
-        id: 1,
-        name: "Señal Reglamentaria",
-        icon: "hola"
-      },
-      {
-        id: 2,
-        name: "Señal Preventiva",
-        icon: "hola"
-      },
-      {
-        id: 3,
-        name: "Señal Informativa",
-        icon: "hola"
-      }];
 
 
-
-    $scope.senalesReglamentaria = [
-      {
-        id: 1,
-        nombre: "Pare",
-        img: "img/senales/sr-01.png",
-        categoria: 1
-      },
-      {
-        id: 2,
-        nombre: "Ceda el paso",
-        img: "img/senales/sr-02.png",
-        categoria: 1
-      },
-      {
-        id: 3,
-        nombre: "Siga de frente",
-        img: "img/senales/sr-03.png",
-        categoria: 1
-      },
-      {
-        id: 4,
-        nombre: "No pase",
-        img: "img/senales/sr-04.png",
-        categoria: 1
-      },
-      {
-        id: 5,
-        nombre: "Giro a la izq. solamente",
-        img: "img/senales/sr-05.png",
-        categoria: 1
-      },
-      {
-        id: 6,
-        nombre: "Prohibido girar a la izq.",
-        img: "img/senales/sr-06.png",
-        categoria: 1
-      },
-      {
-        id: 7,
-        nombre: "Pare",
-        img: "img/senales/sr-01.png",
-        categoria: 1
-      },
-      {
-        id: 8,
-        nombre: "Ceda el paso",
-        img: "img/senales/sr-02.png",
-        categoria: 1
-      },
-      {
-        id: 9,
-        nombre: "Siga de frente",
-        img: "img/senales/sr-03.png",
-        categoria: 1
-      },
-      {
-        id: 10,
-        nombre: "No pase",
-        img: "img/senales/sr-04.png",
-        categoria: 1
-      },
-      {
-        id: 11,
-        nombre: "05: Giro a la izq. solamente",
-        img: "img/senales/sr-05.png",
-        categoria: 1
-      },
-      {
-        id: 12,
-        nombre: "Prohibido girar a la izq.",
-        img: "img/senales/sr-06.png",
-        categoria: 1
-      }
-    ]
-
-    $scope.senalesPreventiva = [
-      {
-        id: 13,
-        nombre: "Curva cerrada a la izq.",
-        img: "img/senales/sp-01.png",
-        categoria: 2
-      },
-      {
-        id: 14,
-        nombre: "Curva cerrada a la der.",
-        img: "img/senales/sp-02.png",
-        categoria: 2
-
-      },
-      {
-        id: 15,
-        nombre: "Curva pronunciada a la izq.",
-        img: "img/senales/sp-03.png",
-        categoria: 2
-
-      },
-      {
-        id: 16,
-        nombre: "Curva pronunciada a la der.",
-        img: "img/senales/sp-04.png",
-        categoria: 2
-
-      },
-      {
-        id: 17,
-        nombre: "Curva y contracurva cerrada primera a la izq.",
-        img: "img/senales/sp-05.png",
-        categoria: 2
-
-      },
-      {
-        id: 18,
-        nombre: "Curva y contracurva cerrada primera a la der.",
-        img: "img/senales/sp-06.png",
-        categoria: 2
-      },
-      {
-        id: 19,
-        nombre: "Curva cerrada a la izq.",
-        img: "img/senales/sp-01.png",
-        categoria: 2
-      },
-      {
-        id: 20,
-        nombre: "Curva cerrada a la der.",
-        img: "img/senales/sp-02.png",
-        categoria: 2
-
-      },
-      {
-        id: 21,
-        nombre: "Curva pronunciada a la izq.",
-        img: "img/senales/sp-03.png",
-        categoria: 2
-
-      },
-      {
-        id: 22,
-        nombre: "Curva pronunciada a la der.",
-        img: "img/senales/sp-04.png",
-        categoria: 2
-
-      },
-      {
-        id: 23,
-        nombre: "Curva y contracurva cerrada primera a la izq.",
-        img: "img/senales/sp-05.png",
-        categoria: 2
-
-      },
-      {
-        id: 24,
-        nombre: "Curva y contracurva cerrada primera a la der.",
-        img: "img/senales/sp-06.png",
-        categoria: 2
-      }
-    ]
-    $scope.senalesInformativa = [
-      {
-        id: 25,
-        nombre: "Ruta nacional",
-        img: "img/senales/si-01.png",
-        categoria: 3
-      },
-      {
-        id: 26,
-        nombre: "Ruta departamental",
-        img: "img/senales/si-1a.png",
-        categoria: 3
-      },
-      {
-        id: 27,
-        nombre: "Ruta panamericana",
-        img: "img/senales/si-02.png",
-        categoria: 3
-      },
-      {
-        id: 28,
-        nombre: "Ruta marginal de selva",
-        img: "img/senales/si-03.png",
-        categoria: 3
-      },
-      {
-        id: 29,
-        nombre: "Sitio de parqueo",
-        img: "img/senales/si-04.png",
-        categoria: 3
-      },
-      {
-        id: 30,
-        nombre: "07A: :Zona especial de parqueo",
-        img: "img/senales/si-01.png",
-        categoria: 3
-      },
-      {
-        id: 31,
-        nombre: "Paradero de buses",
-        img: "img/senales/si-02.png",
-        categoria: 3
-      },
-      {
-        id: 32,
-        nombre: "Ruta nacional",
-        img: "img/senales/si-01.png",
-        categoria: 3
-      },
-      {
-        id: 33,
-        nombre: "Ruta departamental",
-        img: "img/senales/si-1a.png",
-        categoria: 3
-      },
-      {
-        id: 34,
-        nombre: "Ruta panamericana",
-        img: "img/senales/si-02.png",
-        categoria: 3
-      },
-      {
-        id: 35,
-        nombre: "Ruta marginal de selva",
-        img: "img/senales/si-03.png",
-        categoria: 3
-      },
-      {
-        id: 36,
-        nombre: "Sitio de parqueo",
-        img: "img/senales/si-04.png",
-        categoria: 3
-      },
-      {
-        id: 37,
-        nombre: "07A: :Zona especial de parqueo",
-        img: "img/senales/si-01.png",
-        categoria: 3
-      },
-      {
-        id: 38,
-        nombre: "Paradero de buses",
-        img: "img/senales/si-02.png",
-        categoria: 3
-      }
-    ]
     angular.element(document).ready(function () {
+      $scope.getSenalesHttp(1);
+      $scope.getSenalesHttp(2);
+      $scope.getSenalesHttp(3);
+      $scope.getCategoriasHttp();
+      //$scope.senalesReglamentaria = reporteSenalService.getSenalesHttp(1,$http);
       $scope.tomarFoto();
     });
 
@@ -390,13 +110,14 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       reporteSenalService.setCategoria(id);
 
     };
-  $scope.iconSenal="";
-    $scope.nameSenal="";
+
+
     //Metodo para guardar la señal que selecciono del contenedor
+
     $scope.seleccionSenal = function (id,icon,name) {
       reporteSenalService.setIdSenal(id);
-      $scope.iconSenal=icon;
-      $scope.nameSenal=name;
+      $scope.iconSenal = $scope.urlImg+icon;
+      $scope.nameSenal= name;
       $('#contenedorTipoSenal').slideUp(400);
     };
 
@@ -430,7 +151,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       reporteSenalService.httpReporte($http);
       reporteSenalService.agregarReporte();
 
-    }
+    };
 
     $scope.asignarFecha = function(){
 
@@ -443,8 +164,113 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       var fecha = año + '-'+ mes+'-'+dia+' '+hora;
 
       reporteSenalService.setFecha(fecha);
-    }
+    };
+    /**
+     * Metodo REST
+     * @param id
+       */
+    $scope.getSenalesHttp = function(id){
 
+     $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerSenales/'+id)
+        .success(function(data){
+          if(id == 1)
+          {
+            $scope.senalesReglamentaria = data;
+          }
+          else if(id == 2)
+          {
+            $scope.senalesPreventiva = data;
+          }
+          else if(id == 3)
+          {
+            $scope.senalesInformativa = data;
+          }
+          else
+          {
+            console.log('categoria invalida');
+          }
+
+          console.log(data);
+        })
+        .error(function(error){
+          alert('error servitec: '+error);
+        });
+      //console.log($scope.senalesReglamentaria);
+    };
+
+    $scope.getCategoriasHttp = function(){
+
+      $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerCategorias/')
+        .success(function(data){
+          $scope.categoriaSenales = data;
+          console.log(data);
+        })
+        .error(function(error){
+          alert('error servitec: '+error);
+        });
+      //console.log($scope.senalesReglamentaria);
+    };
+
+
+    $scope.opcMuestra = [
+      {
+        id: 1,
+        name: "Tablero",
+        opc: opc
+      },
+      {
+        id: 2,
+        name: "Pedestal",
+        opc: opc
+      },
+      {
+        id: 3,
+        name: "Anclaje",
+        opc: opc
+      },
+      {
+        id: 4,
+        name: "Visibilidad",
+        opc: opc2
+      },
+      {
+        id: 5,
+        name: "Acción a tomar",
+        opc: opc3
+      }
+
+    ];
+    $scope.categoriaSenales = [
+      {
+        id: null,
+        name: null,
+        icon: null
+      }];
+
+    $scope.senalesReglamentaria = [
+      {
+        id: null,
+        nombre: null,
+        img: null,
+        categoria: null
+      }
+    ];
+    $scope.senalesPreventiva = [
+      {
+        id: null,
+        nombre: null,
+        img: null,
+        categoria: null
+      }
+    ];
+    $scope.senalesInformativa = [
+      {
+        id: null,
+        nombre: null,
+        img: null,
+        categoria: null
+      }
+    ];
   });
 
 
