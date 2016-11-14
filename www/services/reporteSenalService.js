@@ -23,6 +23,10 @@ angular.module('reporteSenalService', [])
       return reporte;
     };
 
+    this.setReportes = function(rep){
+      reportes = rep;
+    };
+
     this.setIdSenal = function(idSenal){
       reporte.idSenal = idSenal;
     };
@@ -131,6 +135,7 @@ angular.module('reporteSenalService', [])
           console.log(error);
         });
     };
+
 
     this.agregarReporte= function(){
       reportes.push(reporte);

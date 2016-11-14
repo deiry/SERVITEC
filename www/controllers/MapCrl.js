@@ -1,24 +1,45 @@
 angular.module('MapCtrl', ['ngCordova'])
 
-  .controller('MapCtrl', function($scope,$cordovaGeolocation, LatLngMarcador, reporteSenalService, $timeout){
+  .controller('MapCtrl', function($scope,$cordovaGeolocation, LatLngMarcador, reporteSenalService, $timeout, $http){
     $scope.lat = 6.2518;
     $scope.lng = -75.5636;
     var map;
     var markerPosicion;
     var latLng;
 
+    $scope.reportes = [
+      {
+        id_reporte: 1,
+        id_senal: 1,
+        latitud: 6.28550001 ,
+        longitud: -75.603338 ,
+        fecha: '2016-11-14 12-04-25',
+        foto: '',
+        tablero: '',
+        pedestal: '',
+        anclaje: '',
+        visibilidad: '',
+        observaciones: '',
+        accionTomar: '',
+        id_categoria: 0
+      }
+    ];
 
 
     angular.element(document).ready(function ()
     {
+      //$scope.getReportes();
       latLng = new google.maps.LatLng({lat: $scope.lat, lng: $scope.lng});
       $scope.mostrarMapa();
+
+      //$scope.crearMarcador($scope.reportes);
 
     });
 
 
     $scope.mostrarMapa = function()
     {
+
       map = new google.maps.Map(document.getElementById('map'),{
         zoom: 18,
         disableDefaultUI: true,
@@ -34,12 +55,22 @@ angular.module('MapCtrl', ['ngCordova'])
           var long = position.coords.longitude;
 
           latLng = new google.maps.LatLng({lat: lat, lng: long});
-          console.log(latLng);
+          //console.log(latLng);
           map.setCenter(latLng);
 
         }, function(err) {
           // error
         });
+
+      $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerReportes')
+        .success(function(data,status,headers,config){
+          $scope.reportes = data;
+        //  console.log($scope.reportes);
+        })
+        .error(function(error,status,headers,config){
+          console.log(error);
+        });
+      //console.log($scope.reportes);
 
       $timeout(function(){
 
@@ -49,6 +80,16 @@ angular.module('MapCtrl', ['ngCordova'])
         $scope.lng = latLng.lng();
         reporteSenalService.setLat($scope.lat);
         reporteSenalService.setLng($scope.lng);
+
+        var image = {
+          url: 'img/iconAgente.png',
+          // This marker is 20 pixels wide by 32 pixels high.
+          scaledSize: new google.maps.Size(40, 57),
+          // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(20, 60)
+        };
 
         var circle = new google.maps.Circle({
           strokeColor: '##063971',
@@ -67,6 +108,7 @@ angular.module('MapCtrl', ['ngCordova'])
           animation: google.maps.Animation.DROP,
           position: latLng,
           map: map,
+          icon: image,
           title: 'Hello World!'
         });
 
@@ -83,23 +125,48 @@ angular.module('MapCtrl', ['ngCordova'])
           }
         });
 
+        $scope.crearMarcadores($scope.reportes);
       },7000);
 
+      $scope.crearMarcadores = function(reportes){
+          for(var i = 0; i< reportes.length;i++)
+          {
+            $scope.crearMarcador(reportes[i]);
+          }
+      };
 
-    /*  var latLng = {lat: $scope.lat , lng: $scope.lng };
+      $scope.crearMarcador= function(reporte)
+      {
+        var lat = parseFloat(reporte.latitud);
+        var lng = parseFloat(reporte.longitud);
 
-      map = new google.maps.Map(document.getElementById('map'),{
-        zoom: 18,
-        center: latLng,
-        disableDefaultUI: true,
-        scrollwheel: true,
-        clickableIcons: false
-      });*/
+        //console.log(lat + lng);
 
 
 
+        var latlon = new google.maps.LatLng({lat: lat, lng: lng});
+        var marcador = new google.maps.Marker({
+          draggable: false,
+          animation: google.maps.Animation.DROP,
+          position: latlon,
+          map: map,
+          title: reporte.id_reporte});
+      };
 
-    }
+      $scope.getReportes = function()
+      {
+        $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerReportes')
+          .success(function(data,status,headers,config){
+            $scope.reportes = data;
+          })
+          .error(function(error,status,headers,config){
+            console.log(error);
+          });
+          console.log($scope.reportes);
+      }
+
+
+    };
 
 
     $scope.centrarMapa = function(){
