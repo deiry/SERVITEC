@@ -85,7 +85,7 @@ md-icon {
 /*para hacer los combobox mas grandes en el formulario*/
 md-input-container
 {
-  width: 80%;
+  width: 100%;
 }
 
 .z-position-3
