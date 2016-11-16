@@ -41,7 +41,7 @@ angular.module('MapCtrl', ['ngCordova'])
     {
 
       map = new google.maps.Map(document.getElementById('map'),{
-        zoom: 18,
+        zoom: 20,
         disableDefaultUI: true,
         scrollwheel: true,
         clickableIcons: false
@@ -102,7 +102,7 @@ angular.module('MapCtrl', ['ngCordova'])
           fillOpacity: 0.1,
           map: map,
           center: latLng ,
-          radius: 100,
+          radius: 20,
           clickable: false
         });
 
@@ -119,7 +119,7 @@ angular.module('MapCtrl', ['ngCordova'])
         markerPosicion.addListener('dragend', function() {
           var lat = this.getPosition().lat();
           var lng = this.getPosition().lng();
-          if(kilometros(lat,lng,$scope.lat,$scope.lng) > 100){
+          if(kilometros(lat,lng,$scope.lat,$scope.lng) > 20){
             markerPosicion.setPosition(latLng);
           }
           else {
