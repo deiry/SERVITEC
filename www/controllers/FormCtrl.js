@@ -43,13 +43,17 @@ var opc3 = [
   {
     id:4,
     name: "Inventario"
+  },
+  {
+    id:5,
+    name: "Reubicación"
   }
 ]
 
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http) {
+  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog) {
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal="";
     $scope.nameSenal="";
@@ -161,13 +165,34 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       reporteSenalService.httpReporte($http);
       reporteSenalService.agregarReporte();
 
+      if(reporteSenalService.getRespuesta()== true){
+        console.log("si funciona");
+      }else{
+        console.log("no funciona");
+      }
+
     };
+
+    $scope.showAlert = function(ev, respuesta) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      // Modal dialogs should fully cover application
+      // to prevent interaction outside of dialog
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.querySelector('#popupContainer')))
+          .clickOutsideToClose(true)
+          .title('respuesta')
+          .ok('Got it!')
+          .targetEvent(ev)
+      );
+    };
+
 
     $scope.asignarFecha = function(){
 
       fecha = new Date();
       var dia = fecha.getDate();
-      var mes = fecha.getMonth();
+      var mes = fecha.getMonth()+1;
       var año = fecha.getFullYear();
       var hora = fecha.getHours();
       var min = fecha.getMinutes();
@@ -237,6 +262,9 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         });
       //console.log($scope.senalesReglamentaria);
     };
+
+
+
 
 
     $scope.opcMuestra = [
