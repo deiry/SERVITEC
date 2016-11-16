@@ -166,9 +166,9 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       reporteSenalService.agregarReporte();
 
       if(reporteSenalService.getRespuesta()== true){
-        console.log("si funciona");
+        alert("Enviado correctamente");
       }else{
-        console.log("no funciona");
+       alert("Vuelve a intentarlo");
       }
 
     };
