@@ -147,7 +147,17 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       console.log($scope.imgURI);
       //reporteSenalService.setFoto($scope.imgURI);
       this.asignarFecha();
-      reporteSenalService.setObservaciones($scope.textObservaciones);
+      if($scope.textObservaciones == '')
+      {
+        reporteSenalService.setObservaciones(null);
+
+      }
+      else
+      {
+        reporteSenalService.setObservaciones($scope.textObservaciones);
+      }
+
+      reporteSenalService.setObservaciones();
       reporteSenalService.httpReporte($http);
       reporteSenalService.agregarReporte();
 
@@ -159,9 +169,26 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       var dia = fecha.getDate();
       var mes = fecha.getMonth();
       var año = fecha.getFullYear();
-      var hora = fecha.getHours() + ':'+fecha.getMinutes()+':'+fecha.getSeconds();
+      var hora = fecha.getHours();
+      var min = fecha.getMinutes();
+      var seg = fecha.getSeconds();
 
-      var fecha = año + '-'+ mes+'-'+dia+' '+hora;
+      if(min<10)
+      {
+        min = '0'+fecha.getMinutes();
+      }
+
+      if(seg<10)
+      {
+        seg = '0'+fecha.getSeconds();
+      }
+
+      if(hora<10)
+      {
+        hora = '0'+fecha.getHours();
+      }
+
+      var fecha = año + '-'+ mes+'-'+dia+' '+hora+':'+min+':'+seg;
 
       reporteSenalService.setFecha(fecha);
     };
