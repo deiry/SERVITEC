@@ -1,6 +1,7 @@
 angular.module('reporteSenalService', [])
   .service('reporteSenalService',[function ($http)
   {
+    var respuesta;
     var reportes = [];
     var index=0;
     var reporte = {
@@ -129,13 +130,22 @@ angular.module('reporteSenalService', [])
       console.log(strReporte);
       $http.post('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
         .success(function(data,status,headers,config){
+<<<<<<< HEAD
           console.log(config);
+=======
+          respuesta = true;
+          console.log(data);
+>>>>>>> origin/master
         })
         .error(function(error,status,headers,config){
+          respuesta = false;
           console.log(error);
         });
     };
 
+    this.getRespuesta = function(){
+      return respuesta;
+    }
 
     this.agregarReporte= function(){
       reportes.push(reporte);
