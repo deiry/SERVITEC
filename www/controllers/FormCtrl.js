@@ -167,7 +167,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
       fecha = new Date();
       var dia = fecha.getDate();
-      var mes = fecha.getMonth();
+      var mes = fecha.getMonth()+1;
       var año = fecha.getFullYear();
       var hora = fecha.getHours();
       var min = fecha.getMinutes();
