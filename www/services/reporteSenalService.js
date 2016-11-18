@@ -130,12 +130,9 @@ angular.module('reporteSenalService', [])
       console.log(strReporte);
       $http.post('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
         .success(function(data,status,headers,config){
-<<<<<<< HEAD
-          console.log(config);
-=======
           respuesta = true;
           console.log(data);
->>>>>>> origin/master
+
         })
         .error(function(error,status,headers,config){
           respuesta = false;

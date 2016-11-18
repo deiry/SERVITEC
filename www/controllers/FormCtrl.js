@@ -151,6 +151,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       console.log($scope.imgURI);
       //reporteSenalService.setFoto($scope.imgURI);
       this.asignarFecha();
+
       if($scope.textObservaciones == '')
       {
         reporteSenalService.setObservaciones(null);
