@@ -43,13 +43,17 @@ var opc3 = [
   {
     id:4,
     name: "Inventario"
+  },
+  {
+    id:5,
+    name: "Reubicación"
   }
 ]
 
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http) {
+  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog) {
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal="";
     $scope.nameSenal="";
@@ -147,21 +151,70 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       console.log($scope.imgURI);
       //reporteSenalService.setFoto($scope.imgURI);
       this.asignarFecha();
-      reporteSenalService.setObservaciones($scope.textObservaciones);
+
+      if($scope.textObservaciones == '')
+      {
+        reporteSenalService.setObservaciones(null);
+
+      }
+      else
+      {
+        reporteSenalService.setObservaciones($scope.textObservaciones);
+      }
+
+      reporteSenalService.setObservaciones();
       reporteSenalService.httpReporte($http);
       reporteSenalService.agregarReporte();
 
+      if(reporteSenalService.getRespuesta()== true){
+        alert("Enviado correctamente");
+      }else{
+       alert("Vuelve a intentarlo");
+      }
+
     };
+
+    $scope.showAlert = function(ev, respuesta) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      // Modal dialogs should fully cover application
+      // to prevent interaction outside of dialog
+      $mdDialog.show(
+        $mdDialog.alert()
+          .parent(angular.element(document.querySelector('#popupContainer')))
+          .clickOutsideToClose(true)
+          .title('respuesta')
+          .ok('Got it!')
+          .targetEvent(ev)
+      );
+    };
+
 
     $scope.asignarFecha = function(){
 
       fecha = new Date();
       var dia = fecha.getDate();
-      var mes = fecha.getMonth();
+      var mes = fecha.getMonth()+1;
       var año = fecha.getFullYear();
-      var hora = fecha.getHours() + ':'+fecha.getMinutes()+':'+fecha.getSeconds();
+      var hora = fecha.getHours();
+      var min = fecha.getMinutes();
+      var seg = fecha.getSeconds();
 
-      var fecha = año + '-'+ mes+'-'+dia+' '+hora;
+      if(min<10)
+      {
+        min = '0'+fecha.getMinutes();
+      }
+
+      if(seg<10)
+      {
+        seg = '0'+fecha.getSeconds();
+      }
+
+      if(hora<10)
+      {
+        hora = '0'+fecha.getHours();
+      }
+
+      var fecha = año + '-'+ mes+'-'+dia+' '+hora+':'+min+':'+seg;
 
       reporteSenalService.setFecha(fecha);
     };
@@ -210,6 +263,9 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         });
       //console.log($scope.senalesReglamentaria);
     };
+
+
+
 
 
     $scope.opcMuestra = [
