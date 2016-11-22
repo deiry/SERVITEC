@@ -30,7 +30,7 @@ angular.module('MapCtrl', ['ngCordova'])
     {
       //$scope.getReportes();
       latLng = new google.maps.LatLng({lat: $scope.lat, lng: $scope.lng});
-      //$scope.mostrarMapa();
+      $scope.mostrarMapa();
 
       //$scope.crearMarcador($scope.reportes);
 
@@ -180,7 +180,7 @@ angular.module('MapCtrl', ['ngCordova'])
      * evento que detecta cuando se entra a la vista y refresca el mapa a los 2 segundos
      */
     $scope.$on("$ionicView.enter", function (event, data) {
-      $scope.mostrarMapa();
+      //$scope.mostrarMapa();
     });
 
 
