@@ -1,4 +1,10 @@
 <ion-view view-title="Formulario">
+  <ion-nav-buttons side="primary">
+    <a class="button button-icon icon ion-android-cart" ng-click="testFileDownload()"></a>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="secondary">
+    <a class="button button-icon icon ion-checkmark" ng-click="testFileUpload()"></a>
+  </ion-nav-buttons>
   <ion-content>
 
     <md-content style="height: 100%">
@@ -19,7 +25,9 @@
             <md-input-container>
               <label>Categoria</label>
               <md-select name="opci" ng-model="x" required="">
-                <md-option value={{j}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id, j.name)">{{j.name}}</md-option>
+                <md-option value={{j}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id, j.name)">
+                  {{j.name}}
+                </md-option>
               </md-select>
             </md-input-container>
           </div>
@@ -34,13 +42,14 @@
         <div class="row">
           <div class="col col-50">
             <div class="row" ng-repeat="i in opcMuestra">
-              <div class="col"  ng-if="$even">
+              <div class="col" ng-if="$even">
                 <form name="projectForm" flex-offset="0" flex="66">
                   <md-input-container>
                     <label>{{i.name}}</label>
                     <md-select name="opci" ng-model="x" required="">
                       <md-option ng-repeat="x in i.opc" value={{x.name}}
-                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}</md-option>
+                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}
+                      </md-option>
                     </md-select>
                   </md-input-container>
 
@@ -50,13 +59,14 @@
           </div>
           <div class="col col-50">
             <div class="row" ng-repeat="i in opcMuestra">
-              <div class="col"  ng-if="$odd">
+              <div class="col" ng-if="$odd">
                 <form name="projectForm" flex-offset="10" flex="66">
                   <md-input-container>
                     <label>{{i.name}}</label>
                     <md-select name="opci" ng-model="x" required="">
                       <md-option ng-repeat="x in i.opc" value={{x.name}}
-                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}</md-option>
+                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}
+                      </md-option>
                     </md-select>
                   </md-input-container>
                 </form>
@@ -77,23 +87,28 @@
             </md-button>
           </div>
         </a>
-    </div>
+      </div>
 
 
-
-     <div id="contenedorTipoSenal" class="z-position-2"
+      <div id="contenedorTipoSenal" class="z-position-2"
            style="">
         <div ng-repeat="senal in senales" ng-if="$index % 3 == 0" class="row row-senal">
-          <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index].id,senales[$index].img,senales[$index].nombre)">
+          <div class="col-30 item-senal"
+               ng-click="seleccionSenal(senales[$index].id,senales[$index].img,senales[$index].nombre)">
             <img ng-src="{{urlImg + senales[$index].img}}">
+
             <p>{{senales[$index].nombre}}</p>
           </div>
-          <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 1].id,senales[$index+1].img,senales[$index+1].nombre)">
+          <div class="col-30 item-senal"
+               ng-click="seleccionSenal(senales[$index + 1].id,senales[$index+1].img,senales[$index+1].nombre)">
             <img ng-src="{{urlImg + senales[$index + 1].img}}">
+
             <p>{{senales[$index + 1].nombre}}</p>
           </div>
-          <div class="col-30 item-senal" ng-click="seleccionSenal(senales[$index + 2].id,senales[$index+2].img,senales[$index+2].nombre)">
+          <div class="col-30 item-senal"
+               ng-click="seleccionSenal(senales[$index + 2].id,senales[$index+2].img,senales[$index+2].nombre)">
             <img ng-src="{{urlImg + senales[$index + 2].img}}">
+
             <p>{{senales[$index + 2].nombre}}</p>
           </div>
 

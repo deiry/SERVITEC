@@ -1,59 +1,9 @@
-var opc = [
-  {
-    id: 1,
-    name: "Bueno"
-  },
-  {
-    id: 2,
-    name: "Regular"
-  },
-  {
-    id: 3,
-    name: "Malo"
-  }
-];
-var opc2 = [
-  {
-    id: 1,
-    name: "No Visible"
-  },
-  {
-    id: 2,
-    name: "Poco visible"
-  },
-  {
-    id: 3,
-    name: "Visible"
-  }
-];
-
-var opc3 = [
-  {
-    id: 1,
-    name:"Retiro",
-  },
-  {
-    id:2,
-    name: "Reemplazo"
-  },
-  {
-    id: 3,
-    name: "Mantenimiento"
-  },
-  {
-    id:4,
-    name: "Inventario"
-  },
-  {
-    id:5,
-    name: "Reubicación"
-  }
-]
 
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog) {
+  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog
+                                    ) {
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal="";
     $scope.nameSenal="";
@@ -93,6 +43,53 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         alert(err);
       });
     };
+/*
+    $scope.testFileDownload = function () {
+      // File for download
+      var url = "http://www.gajotres.net/wp-content/uploads/2015/04/logo_radni.png";
+
+      // File name only
+      var filename = url.split("/").pop();
+
+      // Save location
+      var targetPath = cordova.file.externalRootDirectory + filename;
+
+      $cordovaFileTransfer.download(url, targetPath, {}, true).then(function (result) {
+        console.log('Success');
+      }, function (error) {
+        console.log('Error');
+      }, function (progress) {
+        // PROGRESS HANDLING GOES HERE
+      });
+    };
+    $scope.testFileUpload = function () {
+      // Destination URL
+      var url = "http://example.gajotres.net/upload/upload.php";
+
+//File for Upload
+      var targetPath = cordova.file.externalRootDirectory + "logo_radni.png";
+
+// File name only
+      var filename = targetPath.split("/").pop();
+
+      var options = {
+        fileKey: "file",
+        fileName: filename,
+        chunkedMode: false,
+        mimeType: "image/jpg",
+        params : {'directory':'upload', 'fileName':filename} // directory represents remote directory,  fileName represents final remote file name
+      };
+
+      $cordovaFileTransfer.upload(url, targetPath, options).then(function (result) {
+        console.log("SUCCESS: " + JSON.stringify(result.response));
+      }, function (err) {
+        console.log("ERROR: " + JSON.stringify(err));
+      }, function (progress) {
+        // PROGRESS HANDLING GOES HERE
+      });
+    };
+*/
+
     $scope.senales = [];
     /**
      * despliega la vista para seleccionar la señal de transito
@@ -328,5 +325,58 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       }
     ];
   });
+
+var opc = [
+  {
+    id: 1,
+    name: "Bueno"
+  },
+  {
+    id: 2,
+    name: "Regular"
+  },
+  {
+    id: 3,
+    name: "Malo"
+  }
+];
+var opc2 = [
+  {
+    id: 1,
+    name: "No Visible"
+  },
+  {
+    id: 2,
+    name: "Poco visible"
+  },
+  {
+    id: 3,
+    name: "Visible"
+  }
+];
+
+var opc3 = [
+  {
+    id: 1,
+    name:"Retiro",
+  },
+  {
+    id:2,
+    name: "Reemplazo"
+  },
+  {
+    id: 3,
+    name: "Mantenimiento"
+  },
+  {
+    id:4,
+    name: "Inventario"
+  },
+  {
+    id:5,
+    name: "Reubicación"
+  }
+];
+
 
 

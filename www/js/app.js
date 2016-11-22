@@ -1,3 +1,15 @@
+/*Android manifest
+
+ <uses-permissionandroid android:name="android.permission.ACCESS_COARSE_LOCATION" />
+ <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+ <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+ <uses-permission android:name="android.permission.CAMERA" />
+ <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+ cordova plugin add cordova-plugin-file-transfer
+
+* */
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
