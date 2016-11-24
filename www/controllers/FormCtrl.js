@@ -2,8 +2,8 @@
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog
-                                    ) {
+  .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
+                                    $cordovaFileTransfer,$cordovaFile) {
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal="";
     $scope.nameSenal="";
@@ -43,16 +43,20 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         alert(err);
       });
     };
-/*
+
+
+
     $scope.testFileDownload = function () {
       // File for download
-      var url = "http://www.gajotres.net/wp-content/uploads/2015/04/logo_radni.png";
+      debugger;
+        var url = "http://www.gajotres.net/wp-content/uploads/2015/04/logo_radni.png";
 
-      // File name only
+// File name only
       var filename = url.split("/").pop();
 
-      // Save location
-      var targetPath = cordova.file.externalRootDirectory + filename;
+// Save location
+      
+      var targetPath = 'img/' + filename;
 
       $cordovaFileTransfer.download(url, targetPath, {}, true).then(function (result) {
         console.log('Success');
@@ -62,6 +66,9 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         // PROGRESS HANDLING GOES HERE
       });
     };
+
+
+
     $scope.testFileUpload = function () {
       // Destination URL
       var url = "http://example.gajotres.net/upload/upload.php";
@@ -88,7 +95,6 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         // PROGRESS HANDLING GOES HERE
       });
     };
-*/
 
     $scope.senales = [];
     /**
