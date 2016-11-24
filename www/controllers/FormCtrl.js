@@ -2,8 +2,14 @@
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
+<<<<<<< HEAD
   .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
                                     $cordovaFileTransfer,$cordovaFile) {
+=======
+  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
+                                    $cordovaFileTransfer)
+  {
+>>>>>>> origin/Alejandro
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal="";
     $scope.nameSenal="";
