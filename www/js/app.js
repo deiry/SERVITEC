@@ -7,9 +7,14 @@
  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+ cordova plugin add cordova-plugin-camera
+ cordova plugin add cordova-plugin-geolocationcordova plugin add cordova-plugin-file
  cordova plugin add cordova-plugin-file-transfer
+ cordova plugin add cordova-plugin-whitelist
+ cordova plugin add cordova-plugin-file
 
-* */
+
+ * */
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -32,11 +37,13 @@ angular.module('servitec', ['ionic', 'starter.controllers',
 .run(function($ionicPlatform ) {
 
   $ionicPlatform.ready(function() {
+    //console.log(FileTransfer);
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
+
 
     }
     if (window.StatusBar) {
