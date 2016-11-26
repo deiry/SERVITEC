@@ -2,14 +2,11 @@
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
 
-<<<<<<< HEAD
+
   .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
-                                    $cordovaFileTransfer,$cordovaFile) {
-=======
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
-                                    $cordovaFileTransfer)
+                                    $cordovaFileTransfer,$cordovaFile)
   {
->>>>>>> origin/Alejandro
+
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal="";
     $scope.nameSenal="";
@@ -30,7 +27,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
     $scope.tomarFoto = function () {
       var options = {
         quality: 80,
-        destinationType: Camera.DestinationType.DATA_URL,
+        destinationType: Camera.DestinationType.FILE_URI,
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: false,
         targetWidth: 1152,
@@ -42,7 +39,8 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       };
 
       $cordovaCamera.getPicture(options).then(function (imageData) {
-        $scope.imgURI = "data:image/jpeg;base64," + imageData;
+        $scope.imgURI = /*"data:image/jpeg;base64," +*/ imageData;
+        $scope.imageData = imageData;
         LatLngMarcador.img = $scope.imgURI;
 
       }, function (err) {
@@ -54,15 +52,15 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
     $scope.testFileDownload = function () {
       // File for download
-      debugger;
+
         var url = "http://www.gajotres.net/wp-content/uploads/2015/04/logo_radni.png";
 
 // File name only
       var filename = url.split("/").pop();
 
 // Save location
-      
-      var targetPath = 'img/' + filename;
+
+      var targetPath = cordova.file.externalRootDirectory   + filename;
 
       $cordovaFileTransfer.download(url, targetPath, {}, true).then(function (result) {
         console.log('Success');
@@ -77,11 +75,11 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
     $scope.testFileUpload = function () {
       // Destination URL
-      var url = "http://example.gajotres.net/upload/upload.php";
+      var url = "http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos";
 
 //File for Upload
-      var targetPath = cordova.file.externalRootDirectory + "logo_radni.png";
-
+//      var targetPath = cordova.file.externalRootDirectory + "logo_radni.png";
+      var targetPath = $scope.imageData;
 // File name only
       var filename = targetPath.split("/").pop();
 
@@ -89,8 +87,11 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         fileKey: "file",
         fileName: filename,
         chunkedMode: false,
-        mimeType: "image/jpg",
-        params : {'directory':'upload', 'fileName':filename} // directory represents remote directory,  fileName represents final remote file name
+        mineType: ":image/jpeg",
+        //mimeType: "image/jpg",
+        params : {'directory':'upload', 'fileName': filename} // directory represents remote directory,  fileName
+        // represents
+        // final remote file name
       };
 
       $cordovaFileTransfer.upload(url, targetPath, options).then(function (result) {
