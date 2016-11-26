@@ -1,14 +1,9 @@
 
-
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova','ngCordova'])
 
-<<<<<<< HEAD
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,$cordovaFile)
-=======
 
   .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
                                     $cordovaFileTransfer,$cordovaFile)
->>>>>>> refs/remotes/origin/Alejandro
   {
 
     $scope.urlImg = 'img/senales/';
