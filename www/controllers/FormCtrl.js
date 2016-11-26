@@ -2,8 +2,15 @@
 
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova','ngCordova'])
 
+<<<<<<< HEAD
   .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,$cordovaFile)
+=======
+
+  .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
+                                    $cordovaFileTransfer,$cordovaFile)
+>>>>>>> refs/remotes/origin/Alejandro
   {
+
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal="";
     $scope.nameSenal="";
@@ -24,7 +31,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
     $scope.tomarFoto = function () {
       var options = {
         quality: 80,
-        destinationType: Camera.DestinationType.DATA_URL,
+        destinationType: Camera.DestinationType.FILE_URI,
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: false,
         targetWidth: 1152,
@@ -36,25 +43,65 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       };
 
       $cordovaCamera.getPicture(options).then(function (imageData) {
-        $scope.imgURI = "data:image/jpeg;base64," + imageData;
+        $scope.imgURI = /*"data:image/jpeg;base64," +*/ imageData;
+        $scope.imageData = imageData;
         LatLngMarcador.img = $scope.imgURI;
 
       }, function (err) {
         alert(err);
       });
     };
+<<<<<<< HEAD
 
     $scope.testFileDownload = function () {
+=======
+
+
+
+    $scope.testFileDownload = function () {
+      // File for download
+
+        var url = "http://www.gajotres.net/wp-content/uploads/2015/04/logo_radni.png";
+
+// File name only
+      var filename = url.split("/").pop();
+
+// Save location
+
+      var targetPath = cordova.file.externalRootDirectory   + filename;
+>>>>>>> refs/remotes/origin/Alejandro
 
     };
+
+
+
     $scope.testFileUpload = function () {
+<<<<<<< HEAD
+=======
+      // Destination URL
+      var url = "http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos";
+
+//File for Upload
+//      var targetPath = cordova.file.externalRootDirectory + "logo_radni.png";
+      var targetPath = $scope.imageData;
+// File name only
+      var filename = targetPath.split("/").pop();
+>>>>>>> refs/remotes/origin/Alejandro
 
       var options = {
         fileKey: "file",
         fileName: "map.jpg",
         chunkedMode: false,
+<<<<<<< HEAD
         mimeType: "image/jpg",
         params : {'directory':'upload', 'fileName':"map.jpg"}
+=======
+        mineType: ":image/jpeg",
+        //mimeType: "image/jpg",
+        params : {'directory':'upload', 'fileName': filename} // directory represents remote directory,  fileName
+        // represents
+        // final remote file name
+>>>>>>> refs/remotes/origin/Alejandro
       };
 
       $cordovaFile.uploadFile("http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos","/img/map.jpg",options).thend(function(result){
@@ -63,7 +110,10 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         console.log(error);
       });
     };
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/Alejandro
 
     $scope.senales = [];
     /**
