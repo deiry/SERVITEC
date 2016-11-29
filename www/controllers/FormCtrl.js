@@ -1,6 +1,5 @@
 
-
-angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova'])
+angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova','ngCordova'])
 
 
   .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
@@ -11,7 +10,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
     $scope.iconSenal="";
     $scope.nameSenal="";
     $scope.categoriaFiltro = '';
-
+    $scope.imgURI = '';
     var fecha;
 
 
@@ -47,6 +46,10 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         alert(err);
       });
     };
+<<<<<<< HEAD
+
+    $scope.testFileDownload = function () {
+=======
 
 
 
@@ -61,19 +64,15 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 // Save location
 
       var targetPath = cordova.file.externalRootDirectory   + filename;
+>>>>>>> refs/remotes/origin/Alejandro
 
-      $cordovaFileTransfer.download(url, targetPath, {}, true).then(function (result) {
-        console.log('Success');
-      }, function (error) {
-        console.log('Error');
-      }, function (progress) {
-        // PROGRESS HANDLING GOES HERE
-      });
     };
 
 
 
     $scope.testFileUpload = function () {
+<<<<<<< HEAD
+=======
       // Destination URL
       var url = "http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos";
 
@@ -82,26 +81,34 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       var targetPath = $scope.imageData;
 // File name only
       var filename = targetPath.split("/").pop();
+>>>>>>> refs/remotes/origin/Alejandro
 
       var options = {
         fileKey: "file",
-        fileName: filename,
+        fileName: "map.jpg",
         chunkedMode: false,
+<<<<<<< HEAD
+        mimeType: "image/jpg",
+        params : {'directory':'upload', 'fileName':"map.jpg"}
+=======
         mineType: ":image/jpeg",
         //mimeType: "image/jpg",
         params : {'directory':'upload', 'fileName': filename} // directory represents remote directory,  fileName
         // represents
         // final remote file name
+>>>>>>> refs/remotes/origin/Alejandro
       };
 
-      $cordovaFileTransfer.upload(url, targetPath, options).then(function (result) {
-        console.log("SUCCESS: " + JSON.stringify(result.response));
-      }, function (err) {
-        console.log("ERROR: " + JSON.stringify(err));
-      }, function (progress) {
-        // PROGRESS HANDLING GOES HERE
+      $cordovaFile.uploadFile("http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos","/img/map.jpg",options).thend(function(result){
+        console.log("SUCCESS:" + JSON.stringify(result.response));
+      },function(error){
+        console.log(error);
       });
     };
+<<<<<<< HEAD
+
+=======
+>>>>>>> refs/remotes/origin/Alejandro
 
     $scope.senales = [];
     /**
