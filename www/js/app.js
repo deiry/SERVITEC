@@ -8,7 +8,7 @@
  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
  cordova plugin add cordova-plugin-camera
- cordova plugin add cordova-plugin-geolocationcordova plugin add cordova-plugin-file
+ cordova plugin add cordova-plugin-geolocation
  cordova plugin add cordova-plugin-file-transfer
  cordova plugin add cordova-plugin-whitelist
  cordova plugin add cordova-plugin-file

@@ -128,7 +128,7 @@ angular.module('reporteSenalService', [])
         reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones+'/'+reporte.accionTomar+'/'+reporte.categoria+'/'+reporte.fecha;
 
       console.log(strReporte);
-      $http.post('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/insertarReporte/'+strReporte)
+      $http.post('http://signalstreet.net/index.php/ReportesRest/insertarReporte/'+strReporte)
         .success(function(data,status,headers,config){
           respuesta = true;
           console.log(data);

@@ -1,9 +1,10 @@
 angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova', 'ngCordova'])
 
 
-  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
-                                    $cordovaFileTransfer, $cordovaFile) {
-
+  .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
+                                   $cordovaFileTransfer,$cordovaFile, $timeout)
+  {
+    $scope.imgName = 'upload img reportes ';
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal = "";
     $scope.nameSenal = "";
@@ -45,57 +46,59 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       });
     };
 
-
     $scope.testFileDownload = function () {
       // File for download
 
       var url = "http://www.gajotres.net/wp-content/uploads/2015/04/logo_radni.png";
 
-// File name only
+      // File name only
       var filename = url.split("/").pop();
 
-// Save location
+      // Save location
 
-      var targetPath = cordova.file.externalRootDirectory + filename;
+      var targetPath = cordova.file.externalRootDirectory   + filename;
 
-
-    };
-
-
-    $scope.testFileUpload = function () {
-
-      // Destination URL
-      var url = "http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos";
-
-//File for Upload
-//      var targetPath = cordova.file.externalRootDirectory + "logo_radni.png";
-      var targetPath = $scope.imageData;
-// File name only
-      var filename = targetPath.split("/").pop();
-
-
-      var options = {
-        fileKey: "file",
-        fileName: "map.jpg",
-        chunkedMode: false,
-
-        mimeType: "image/jpg",
-        params: {'directory': 'upload', 'fileName': "map.jpg"},
-        mineType: ":image/jpeg",
-        //mimeType: "image/jpg",
-        params: {'directory': 'upload', 'fileName': filename} // directory represents remote directory,  fileName
-        // represents
-        // final remote file name
-
-      };
-
-      $cordovaFile.uploadFile("http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos", "/img/map.jpg", options).thend(function (result) {
-        console.log("SUCCESS:" + JSON.stringify(result.response));
+      $cordovaFileTransfer.download(url, targetPath, {}, true).then(function (result) {
+        console.log('Success');
       }, function (error) {
-        console.log(error);
+        console.log('Error');
+      }, function (progress) {
+        // PROGRESS HANDLING GOES HERE
       });
     };
 
+
+
+    $scope.fileUpload = function () {
+      // Destination URL
+      var url = "http://signalstreet.net/index.php/CargarArchivos";
+
+    //File for Upload
+    //      var targetPath = cordova.file.externalRootDirectory + "logo_radni.png";
+      var targetPath = $scope.imageData;
+    // File name only
+      var filename = targetPath.split("/").pop();
+      $scope.imgName = $scope.imgName + filename;
+      var options = {
+        fileKey: "file",
+        fileName: filename,
+        chunkedMode: false,
+        mineType: ":image/jpeg",
+        //mimeType: "image/jpg",
+        params : {'directory':'upload/img/reportes', 'fileName': filename} // directory represents remote directory,
+        //  fileName
+        // represents
+        // final remote file name
+      };
+
+      $cordovaFileTransfer.upload(url, targetPath, options).then(function (result) {
+        console.log("SUCCESS: " + JSON.stringify(result.response));
+      }, function (err) {
+        console.log("ERROR: " + JSON.stringify(err));
+      }, function (progress) {
+        // PROGRESS HANDLING GOES HERE
+      });
+    };
 
     $scope.senales = [];
     /**
@@ -151,9 +154,12 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
     };
     $scope.textObservaciones = null;
-    $scope.enviarFormulario = function () {
-      console.log($scope.imgURI);
-      //reporteSenalService.setFoto($scope.imgURI);
+
+
+    $scope.enviarFormulario = function ()
+    {
+      console.log('holaaaaa');
+
       this.asignarFecha();
 
       if ($scope.textObservaciones == '') {
@@ -163,16 +169,22 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       else {
         reporteSenalService.setObservaciones($scope.textObservaciones);
       }
+      $scope.fileUpload();
 
-      reporteSenalService.setObservaciones();
-      reporteSenalService.httpReporte($http);
-      reporteSenalService.agregarReporte();
+      $timeout(function()
+      {
+        reporteSenalService.setFoto($scope.imgName);
+        reporteSenalService.setObservaciones();
+        reporteSenalService.httpReporte($http);
+        reporteSenalService.agregarReporte();
+      },3000);
 
+/*
       if (reporteSenalService.getRespuesta() == true) {
         alert("Enviado correctamente");
       } else {
         alert("Vuelve a intentarlo");
-      }
+      }*/
 
     };
 
@@ -223,7 +235,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
      */
     $scope.getSenalesHttp = function (id) {
 
-      $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerSenales/' + id)
+      $http.get('http://signalstreet.net/index.php/ReportesRest/obtenerSenales/' + id)
         .success(function (data) {
           if (id == 1) {
             $scope.senalesReglamentaria = data;
@@ -248,7 +260,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
     $scope.getCategoriasHttp = function () {
 
-      $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerCategorias/')
+      $http.get('http://signalstreet.net/index.php/ReportesRest/obtenerCategorias/')
         .success(function (data) {
           $scope.categoriaSenales = data;
           console.log(data);
