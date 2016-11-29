@@ -1,14 +1,12 @@
+angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova', 'ngCordova'])
 
-angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngMdIcons', 'ngCordova','ngCordova'])
 
-
-  .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
-                                    $cordovaFileTransfer,$cordovaFile)
-  {
+  .controller('FormCtrl', function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
+                                    $cordovaFileTransfer, $cordovaFile) {
 
     $scope.urlImg = 'img/senales/';
-    $scope.iconSenal="";
-    $scope.nameSenal="";
+    $scope.iconSenal = "";
+    $scope.nameSenal = "";
     $scope.categoriaFiltro = '';
     $scope.imgURI = '';
     var fecha;
@@ -46,33 +44,26 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         alert(err);
       });
     };
-<<<<<<< HEAD
-
-    $scope.testFileDownload = function () {
-=======
-
 
 
     $scope.testFileDownload = function () {
       // File for download
 
-        var url = "http://www.gajotres.net/wp-content/uploads/2015/04/logo_radni.png";
+      var url = "http://www.gajotres.net/wp-content/uploads/2015/04/logo_radni.png";
 
 // File name only
       var filename = url.split("/").pop();
 
 // Save location
 
-      var targetPath = cordova.file.externalRootDirectory   + filename;
->>>>>>> refs/remotes/origin/Alejandro
+      var targetPath = cordova.file.externalRootDirectory + filename;
+
 
     };
 
 
-
     $scope.testFileUpload = function () {
-<<<<<<< HEAD
-=======
+
       // Destination URL
       var url = "http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos";
 
@@ -81,34 +72,30 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       var targetPath = $scope.imageData;
 // File name only
       var filename = targetPath.split("/").pop();
->>>>>>> refs/remotes/origin/Alejandro
+
 
       var options = {
         fileKey: "file",
         fileName: "map.jpg",
         chunkedMode: false,
-<<<<<<< HEAD
+
         mimeType: "image/jpg",
-        params : {'directory':'upload', 'fileName':"map.jpg"}
-=======
+        params: {'directory': 'upload', 'fileName': "map.jpg"},
         mineType: ":image/jpeg",
         //mimeType: "image/jpg",
-        params : {'directory':'upload', 'fileName': filename} // directory represents remote directory,  fileName
+        params: {'directory': 'upload', 'fileName': filename} // directory represents remote directory,  fileName
         // represents
         // final remote file name
->>>>>>> refs/remotes/origin/Alejandro
+
       };
 
-      $cordovaFile.uploadFile("http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos","/img/map.jpg",options).thend(function(result){
+      $cordovaFile.uploadFile("http://servitec.ddns.net:8000/servitecserver/index.php/CargarArchivos", "/img/map.jpg", options).thend(function (result) {
         console.log("SUCCESS:" + JSON.stringify(result.response));
-      },function(error){
+      }, function (error) {
         console.log(error);
       });
     };
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/Alejandro
 
     $scope.senales = [];
     /**
@@ -116,7 +103,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
      * @param id  tiene el id de la categoria de la señal
      * 1: si es reglamentaria, 2: si es preventiva, 3: si es informativa
      */
-    $scope.seleccionCategoria = function (id,name) {
+    $scope.seleccionCategoria = function (id, name) {
       if (id == 1) {
         $scope.senales = $scope.senalesReglamentaria;
       }
@@ -135,15 +122,15 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
     //Metodo para guardar la señal que selecciono del contenedor
 
-    $scope.seleccionSenal = function (id,icon,name) {
+    $scope.seleccionSenal = function (id, icon, name) {
       reporteSenalService.setIdSenal(id);
-      $scope.iconSenal = $scope.urlImg+icon;
-      $scope.nameSenal= name;
+      $scope.iconSenal = $scope.urlImg + icon;
+      $scope.nameSenal = name;
       $('#contenedorTipoSenal').slideUp(400);
     };
 
-    $scope.seleccionFormulario = function (idOpcmuestra,nameOpc) {
-        switch (idOpcmuestra) {
+    $scope.seleccionFormulario = function (idOpcmuestra, nameOpc) {
+      switch (idOpcmuestra) {
         case 1:
           reporteSenalService.setTablero(nameOpc);
           break;
@@ -164,18 +151,16 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
     };
     $scope.textObservaciones = null;
-    $scope.enviarFormulario = function(){
+    $scope.enviarFormulario = function () {
       console.log($scope.imgURI);
       //reporteSenalService.setFoto($scope.imgURI);
       this.asignarFecha();
 
-      if($scope.textObservaciones == '')
-      {
+      if ($scope.textObservaciones == '') {
         reporteSenalService.setObservaciones(null);
 
       }
-      else
-      {
+      else {
         reporteSenalService.setObservaciones($scope.textObservaciones);
       }
 
@@ -183,15 +168,15 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       reporteSenalService.httpReporte($http);
       reporteSenalService.agregarReporte();
 
-      if(reporteSenalService.getRespuesta()== true){
+      if (reporteSenalService.getRespuesta() == true) {
         alert("Enviado correctamente");
-      }else{
-       alert("Vuelve a intentarlo");
+      } else {
+        alert("Vuelve a intentarlo");
       }
 
     };
 
-    $scope.showAlert = function(ev, respuesta) {
+    $scope.showAlert = function (ev, respuesta) {
       // Appending dialog to document.body to cover sidenav in docs app
       // Modal dialogs should fully cover application
       // to prevent interaction outside of dialog
@@ -206,83 +191,73 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
     };
 
 
-    $scope.asignarFecha = function(){
+    $scope.asignarFecha = function () {
 
       fecha = new Date();
       var dia = fecha.getDate();
-      var mes = fecha.getMonth()+1;
+      var mes = fecha.getMonth() + 1;
       var año = fecha.getFullYear();
       var hora = fecha.getHours();
       var min = fecha.getMinutes();
       var seg = fecha.getSeconds();
 
-      if(min<10)
-      {
-        min = '0'+fecha.getMinutes();
+      if (min < 10) {
+        min = '0' + fecha.getMinutes();
       }
 
-      if(seg<10)
-      {
-        seg = '0'+fecha.getSeconds();
+      if (seg < 10) {
+        seg = '0' + fecha.getSeconds();
       }
 
-      if(hora<10)
-      {
-        hora = '0'+fecha.getHours();
+      if (hora < 10) {
+        hora = '0' + fecha.getHours();
       }
 
-      var fecha = año + '-'+ mes+'-'+dia+' '+hora+':'+min+':'+seg;
+      var fecha = año + '-' + mes + '-' + dia + ' ' + hora + ':' + min + ':' + seg;
 
       reporteSenalService.setFecha(fecha);
     };
     /**
      * Metodo REST
      * @param id
-       */
-    $scope.getSenalesHttp = function(id){
+     */
+    $scope.getSenalesHttp = function (id) {
 
-     $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerSenales/'+id)
-        .success(function(data){
-          if(id == 1)
-          {
+      $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerSenales/' + id)
+        .success(function (data) {
+          if (id == 1) {
             $scope.senalesReglamentaria = data;
           }
-          else if(id == 2)
-          {
+          else if (id == 2) {
             $scope.senalesPreventiva = data;
           }
-          else if(id == 3)
-          {
+          else if (id == 3) {
             $scope.senalesInformativa = data;
           }
-          else
-          {
+          else {
             console.log('categoria invalida');
           }
 
           console.log(data);
         })
-        .error(function(error){
-          alert('error servitec: '+error);
+        .error(function (error) {
+          alert('error servitec: ' + error);
         });
       //console.log($scope.senalesReglamentaria);
     };
 
-    $scope.getCategoriasHttp = function(){
+    $scope.getCategoriasHttp = function () {
 
       $http.get('http://servitec.ddns.net:8000/servitecserver/index.php/ReportesRest/obtenerCategorias/')
-        .success(function(data){
+        .success(function (data) {
           $scope.categoriaSenales = data;
           console.log(data);
         })
-        .error(function(error){
-          alert('error servitec: '+error);
+        .error(function (error) {
+          alert('error servitec: ' + error);
         });
       //console.log($scope.senalesReglamentaria);
     };
-
-
-
 
 
     $scope.opcMuestra = [
@@ -378,10 +353,10 @@ var opc2 = [
 var opc3 = [
   {
     id: 1,
-    name:"Retiro",
+    name: "Retiro",
   },
   {
-    id:2,
+    id: 2,
     name: "Reemplazo"
   },
   {
@@ -389,11 +364,11 @@ var opc3 = [
     name: "Mantenimiento"
   },
   {
-    id:4,
+    id: 4,
     name: "Inventario"
   },
   {
-    id:5,
+    id: 5,
     name: "Reubicación"
   }
 ];
