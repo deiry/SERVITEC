@@ -125,10 +125,10 @@ angular.module('reporteSenalService', [])
     {
 
       var strReporte = reporte.idSenal+'/'+reporte.latitud+'/'+reporte.longitud+'/'+reporte.tablero+'/'+reporte.pedestal+'/'+reporte.anclaje+'/'+
-        reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones+'/'+reporte.accionTomar+'/'+reporte.categoria+'/'+reporte.fecha;
+        reporte.visibilidad+'/'+reporte.foto+'/'+reporte.observaciones+'/'+reporte.accionTomar+'/'+reporte.fecha;
 
       console.log(strReporte);
-      $http.post('http://signalstreet.net/index.php/ReportesRest/insertarReporte/'+strReporte)
+     $http.post('http://signalstreet.net/index.php/ReportesRest/insertarReporte/'+strReporte)
         .success(function(data,status,headers,config){
           respuesta = true;
           console.log(data);

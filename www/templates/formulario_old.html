@@ -25,8 +25,8 @@
             <md-input-container>
               <label>Categoria</label>
               <md-select name="opci" ng-model="x" required="">
-                <md-option value={{j.id}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id, j.nombre)">
-                  {{j.nombre}}
+                <md-option value={{j}} ng-repeat="j in categoriaSenales" ng-click="seleccionCategoria(j.id, j.name)">
+                  {{j.name}}
                 </md-option>
               </md-select>
             </md-input-container>
@@ -39,75 +39,47 @@
 
           </div>
         </div>
+        <div class="row">
+          <div class="col col-50">
+            <div class="row" ng-repeat="i in opcMuestra">
+              <div class="col" ng-if="$even">
+                <form name="projectForm" flex-offset="0" flex="66">
+                  <md-input-container>
+                    <label>{{i.name}}</label>
+                    <md-select name="opci" ng-model="x" required="">
+                      <md-option ng-repeat="x in i.opc" value={{x.name}}
+                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
 
-        <div class="row">
-          <div class="col col-50">
-            <md-input-container>
-              <label>Tablero</label>
-              <md-select name="" ng-model="formulario.tablero" required="">
-                <md-option value={{tab.id}} ng-repeat="tab in estados" ng-click="">
-                  {{tab.nombre}}
-                </md-option>
-              </md-select>
-            </md-input-container>
+                </form>
+              </div>
+            </div>
           </div>
           <div class="col col-50">
-            <md-input-container>
-              <label>Pedestal</label>
-              <md-select name="" ng-model="formulario.pedestal" required="">
-                <md-option value={{tab.id}} ng-repeat="tab in estados" ng-click="">
-                  {{tab.nombre}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col col-50">
-            <md-input-container>
-              <label>Anclaje</label>
-              <md-select name="" ng-model="formulario.anclaje" required="">
-                <md-option value={{tab.id}} ng-repeat="tab in estados" ng-click="">
-                  {{tab.nombre}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-          </div>
-          <div class="col col-50">
-            <md-input-container>
-              <label>Visibilidad</label>
-              <md-select name="" ng-model="formulario.visibilidad" required="">
-                <md-option value={{vis.id}} ng-repeat="vis in visibilidad" ng-click="">
-                  {{vis.nombre}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col col-50">
-            <md-input-container>
-              <label>Accion a Tomar</label>
-              <md-select name="" ng-model="formulario.accion" required="">
-                <md-option value={{acc.id}} ng-repeat="acc in accion" ng-click="">
-                  {{acc.nombre}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-          </div>
-          <div class="col col-50">
-
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <md-input-container class="layout-margin">
-              <label>Observaciones</label>
-              <textarea ng-model="formulario.observaciones"></textarea>
-            </md-input-container>
+            <div class="row" ng-repeat="i in opcMuestra">
+              <div class="col" ng-if="$odd">
+                <form name="projectForm" flex-offset="10" flex="66">
+                  <md-input-container>
+                    <label>{{i.name}}</label>
+                    <md-select name="opci" ng-model="x" required="">
+                      <md-option ng-repeat="x in i.opc" value={{x.name}}
+                                 ng-click="seleccionFormulario(i.id,x.name)">{{x.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
 
+
+        <md-input-container class="layout-margin">
+          <label>Observaciones</label>
+          <textarea ng-model="$parent.textObservaciones"></textarea>
+        </md-input-container>
         <a href="" ng-click="enviarFormulario()">
           <div style="position: fixed; bottom: 3%;right: 0;">
             <md-button aria-label="menu" class="md-fab md-primary colorApp">
@@ -116,7 +88,6 @@
           </div>
         </a>
       </div>
-
 
 
       <div id="contenedorTipoSenal" class="z-position-2"
