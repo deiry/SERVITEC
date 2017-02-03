@@ -3,13 +3,14 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
 
   .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
-                                   $cordovaFileTransfer,$cordovaFile)
+                                   $cordovaFileTransfer,$cordovaFile,$ionicModal)
   {
     $scope.urlServidor = 'http://signalstreet.net';
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal="";
     $scope.nameSenal="";
     $scope.categoriaFiltro = '';
+    $scope.senales = null;
     $scope.imgURI = '';
     $scope.formulario = {
       tablero: null,
@@ -54,7 +55,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
         LatLngMarcador.img = $scope.imgURI;
 
       }, function (err) {
-        alert(err);
+        console.log(err);
       });
     };
 
@@ -92,19 +93,26 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
      * 1: si es reglamentaria, 2: si es preventiva, 3: si es informativa
      */
     $scope.seleccionCategoria = function (id,name) {
-      if (id == 1) {
-        $scope.senales = $scope.senalesReglamentaria;
-      }
-      if (id == 2) {
-        $scope.senales = $scope.senalesPreventiva;
-      }
-      if (id == 3) {
-        $scope.senales = $scope.senalesInformativa;
-      }
-      $('#contenedorTipoSenal').slideDown(400);
-      $scope.categoriaFiltro = id;
-      reporteSenalService.setCategoria(id);
 
+      $scope.getSenalesHttp(id);
+      $scope.openModal();
+
+    };
+
+/**
+Metodo para implementar el modal mostrando las señales de la categoria seleccionada
+ */
+    $ionicModal.fromTemplateUrl('/templates/modalSenales.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+      $scope.modal.hide();
     };
 
 
@@ -114,7 +122,8 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
       reporteSenalService.setIdSenal(id);
       $scope.iconSenal = $scope.urlImg+icon;
       $scope.nameSenal= name;
-      $('#contenedorTipoSenal').slideUp(400);
+      $scope.closeModal();
+      //$('#contenedorTipoSenal').slideUp(400);
     };
 
 
@@ -231,7 +240,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
 
       $http.get($scope.urlServidor+'/index.php/ReportesRest/obtenerSenales/'+id)
         .success(function(data){
-          if(id == 1)
+          /*if(id == 1)
           {
             $scope.senalesReglamentaria = data;
           }
@@ -247,11 +256,12 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
           {
             console.log('categoria invalida');
           }
-
-          //console.log(data);
+*/
+          $scope.senales = data;
+          console.log(data);
         })
         .error(function(error){
-          alert('error servitec: '+error);
+          console.log('error servitec: '+error);
         });
       //console.log($scope.senalesReglamentaria);
     };
@@ -264,7 +274,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
           //console.log(data);
         })
         .error(function(error){
-          alert('error servitec: '+error);
+          console.log('error servitec: '+error);
         });
       //console.log($scope.senalesReglamentaria);
     };
@@ -277,7 +287,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
          // console.log(data);
         })
         .error(function(error){
-          alert('error servitec: '+error);
+          console.log('error servitec: '+error);
         });
     };
 
@@ -289,7 +299,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
           //console.log(data);
         })
         .error(function(error){
-          alert('error servitec: '+error);
+          console.log('error servitec: '+error);
         });
     };
 
@@ -301,7 +311,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
           //console.log(data);
         })
         .error(function(error){
-          alert('error servitec: '+error);
+          console.log('error servitec: '+error);
         });
     };
 

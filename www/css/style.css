@@ -1,3 +1,6 @@
+/*css modalSenales*/
+
+/*FIN css modalSenales*/
 
 
 h1{
@@ -111,10 +114,12 @@ md-input-container
   margin: 5px;
   width: 80%;
   margin-left: 10%;
+
 }
 .item-senal>p{
   margin-right: 5px;
   margin-left: 5px;
+  padding-bottom: 5px;
   text-align: center;
   overflow-wrap: break-word;
   font-size: 12px;
