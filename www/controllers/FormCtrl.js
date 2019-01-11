@@ -5,7 +5,7 @@ angular.module('FormCtrl', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache
   .controller('FormCtrl',function ($scope, $cordovaCamera, LatLngMarcador, reporteSenalService, $http, $mdDialog,
                                    $cordovaFileTransfer,$cordovaFile,$ionicModal)
   {
-    $scope.urlServidor = 'http://signalstreet.net';
+    $scope.urlServidor = 'http://signalstreet.hol.es';
     $scope.urlImg = 'img/senales/';
     $scope.iconSenal="";
     $scope.nameSenal="";

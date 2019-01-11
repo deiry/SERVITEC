@@ -1,6 +1,8 @@
 {
   "name": "servitec",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "e04b9ebd",
   "watchPatterns": [

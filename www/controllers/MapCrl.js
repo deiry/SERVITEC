@@ -65,7 +65,7 @@ angular.module('MapCtrl', ['ngCordova'])
       /**
        * Rest para obtener los reportes!!
        */
-        $http.get('http://signalstreet.net/index.php/ReportesRest/obtenerReportes')
+        $http.get('http://signalstreet.hol.es/index.php/ReportesRest/obtenerReportes')
           .success(function(data,status,headers,config){
             $scope.reportes = data;
           //  console.log($scope.reportes);
@@ -158,7 +158,7 @@ angular.module('MapCtrl', ['ngCordova'])
 
       $scope.getReportes = function()
       {
-        $http.get('http://signalstreet.net/index.php/ReportesRest/obtenerReportes')
+        $http.get('http://signalstreet.hol.es/index.php/ReportesRest/obtenerReportes')
           .success(function(data,status,headers,config){
             $scope.reportes = data;
           })
