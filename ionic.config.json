@@ -1,4 +1,12 @@
 {
   "name": "servitec",
-  "app_id": "e04b9ebd"
+  "integrations": {},
+  "type": "angular",
+  "id": "e04b9ebd",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
 }
